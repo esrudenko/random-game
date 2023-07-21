@@ -32,11 +32,13 @@
             </div>
         </div>
     </header>
-    <main>
-        <div class="container">
-            <section class="welcome" id="welcome">
+    <main class="main">
+        <section class="welcome" id="welcome">
+            <div class="container">
                 <h3 class="welcome-text">Welcome<br>to the Brooklyn Library</h3>
-            </section>
+            </div>
+        </section>
+        <div class="container">
             <section class="about" id="about">
                 <h2 class="about-title title-section">About</h2>
                 <div class="layout"></div>
@@ -344,12 +346,7 @@
                         <a href="mailto:AmandaHirst@gmail.com" class="callus-link">Library Director:<span class="email">
                                 Amanda Hirst</span></a>
                     </div>
-                    <div class="map">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.015980380976!2d-73.99616314949672!3d40.69564569786839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a49b649b8c3%3A0x6342a2291cea2e!2s286%20Cadman%20Plaza%20W%2C%20Brooklyn%2C%20NY%2011201%2C%20USA!5e0!3m2!1sen!2skz!4v1689190453431!5m2!1sen!2skz"
-                            width="696" height="414" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade" class="map-link"></iframe>
-                    </div>
+                    <img class="map" src="./img/map.png" alt="map">
                 </div>
             </section>
             <section class="library-card" id="library-card">
@@ -361,14 +358,17 @@
                         <div class="find-card-title">
                             <div class="card-bg-brown">
                                 <p class="card-title">Brooklyn Public Library</p>
-                                <form class="input-border input-border-name">
-                                    <input type="text" id="card-name" class="card-name" placeholder="Reader's name">
-                                </form>
-                                <form class="input-border input-border-number">
-                                    <input type="text" id="card-number" class="card-number" placeholder="Card number">
+                                <form>
+                                    <div class="input-border input-border-name">
+                                        <input type="text" id="card-name" class="card-name" placeholder="Reader's name">
+                                    </div>
+                                    <div class="input-border input-border-number">
+                                        <input type="text" id="card-number" class="card-number"
+                                            placeholder="Card number">
+                                    </div>
+                                    <button type="submit" class="find-card-btn">Check the card</button>
                                 </form>
                             </div>
-                            <button class="find-card-btn">Check the card</button>
                         </div>
                     </div>
                     <div class="get-card">
@@ -382,7 +382,7 @@
             </section>
         </div>
     </main>
-    <footer>
+    <footer class="footer">
         <div class="container footer">
             <div class="footer-library">
                 <div class="footer-library-left">
@@ -405,7 +405,7 @@
             <div class="layout4"></div>
             <div class="footer-school">
                 <p class="data"><time>2023</time></p>
-                <p class="name-school">The Rolling Scopes School</p>
+                <p class="name-school"><a href="https://rs.school/js-stage0/" class="footer-link">The Rolling Scopes School</a></p>
                 <p class="username"><a href="https://github.com/esrudenko" class="footer-link">Elena Mankerova</a></p>
             </div>
         </div>
