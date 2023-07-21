@@ -185,7 +185,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
@@ -197,7 +196,9 @@ body {
 }
 
 .header {
-    height: 90px;
+    background-size: 100%;
+    background-color: #0C0C0E;
+    height: 91px;
 }
 
 .humb-menu {
@@ -244,9 +245,16 @@ body {
     margin-left: 40px;
 }
 
+.main {
+    background-size: 100%;
+}
+
 .welcome {
-    height: 600px;
+    height: 599px;
+    min-width: 1440px;
     background: url(img/Welcome.png), lightgray 50% / cover no-repeat;
+    background-position: center center;
+    background-size: 100% 600px;
 }
 
 .welcome-text {
@@ -289,7 +297,7 @@ body {
     width: 50px;
     height: 1px;
     margin-left: 695px;
-    margin-top: -10px;
+    margin-top: -12px;
     background-color: #0C0C0E;
 }
 
@@ -310,8 +318,9 @@ body {
 
 .carousel {
     display: flex;
-    margin-top: 40px;
-    margin-left: 686px;
+    margin-top: 35px;
+    margin-left: 681px;
+    cursor: pointer;
 }
 
 .carousel-left,
@@ -319,6 +328,7 @@ body {
 .carousel-right {
     width: 26px;
     height: 26px;
+    padding: 5px;
 }
 
 .favorites {
@@ -374,36 +384,25 @@ body {
 }
 
 .form-radio {
+    display: flex;
     padding: 5px;
     cursor: pointer;
 }
 
 .form-radio input[type=radio] {
-    display: none;
+    width: 17px;
+    height: 17px;
+    accent-color: black;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 .form-radio label {
     display: block;
     cursor: pointer;
-    position: relative;
     line-height: 18px;
     user-select: none;
-    margin-right: 0;
-}
-
-.form-radio label:before {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    margin-left: -33px;
-    width: 17px;
-    height: 17px;
-    background: url(img/radio_noneactive.svg) 0 0 no-repeat;
-}
-
-/* Checked */
-.form-radio input[type=radio]:checked+label:before {
-    background: url(img/radio_active.svg) 0 0 no-repeat;
+    padding-left: 22px;
 }
 
 .form-radio input[type=radio]:checked+label {
@@ -470,6 +469,7 @@ body {
     border: 1px solid #0C0C0E;
     border-radius: 2px;
     background-color: #FFF;
+    cursor: pointer;
     margin-left: 20px;
 }
 
@@ -484,6 +484,7 @@ body {
 .buy:disabled {
     border: 1px solid #BB945F;
     color: #BB945F;
+    cursor: default;
 }
 
 .buy-2-winter,
@@ -650,6 +651,14 @@ body {
     margin-top: 20px;
 }
 
+.callus:hover,
+.callus-link:hover,
+.footer-address:hover,
+.name-school:hover,
+.username:hover {
+    text-decoration: underline;
+}
+
 .callus-link {
     font-weight: 400;
     text-decoration: none;
@@ -658,6 +667,7 @@ body {
 
 .admin {
     margin-bottom: 20px;
+    margin-top: 42px;
 }
 
 .email {
@@ -665,12 +675,12 @@ body {
 }
 
 .map {
-    margin-left: 210px;
+    margin-left: 200px;
     margin-top: 37px;
 }
 
 .library-card {
-    height: 614px;
+    height: 594px;
 }
 
 .card {
@@ -758,7 +768,8 @@ body {
     border-radius: 2px;
     background-color: #FFF;
     color: #0C0C0E;
-    margin: 20px 0px 0px 179px;
+    cursor: pointer;
+    margin: 44px 0px 0px 156px;
     padding: 10px 36px;
 }
 
@@ -792,18 +803,19 @@ body {
     border: 1px solid #0C0C0E;
     border-radius: 2px;
     background-color: #FFF;
+    cursor: pointer;
     padding: 10px 0px;
     margin-top: 15px;
 }
 
 .sign-up {
-    margin-right: 20px;
+    margin-right: 16px;
 }
 
 .footer {
     height: 250px;
+    background-size: 100%;
     background-color: #0C0C0E;
-    margin-top: -21px;
 }
 
 .footer-library {
@@ -837,12 +849,16 @@ body {
     margin-left: 1022px;
 }
 
+.working-hours {
+    margin-bottom: -4px;
+}
+
 .layout4 {
     text-align: center;
     width: 1400px;
     height: 1px;
     background-color: #FFF;
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 20px;
 }
 
@@ -854,7 +870,7 @@ body {
     font-size: 20px;
     line-height: 20px;
     letter-spacing: 2px;
-    margin-top: 24px;
+    margin-top: 25px;
 }
 
 .data {
@@ -862,6 +878,7 @@ body {
 }
 
 .name-school {
+    cursor: pointer;
     margin-left: 494px;
 }
 
