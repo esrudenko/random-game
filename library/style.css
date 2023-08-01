@@ -893,3 +893,9 @@ body {
 .username {
     margin-left: 357px;
 }
+
+.image_4,
+.image_5,
+.icon-card {
+    display: none;
+}
