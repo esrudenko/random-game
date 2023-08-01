@@ -648,8 +648,13 @@ body {
     margin-top: 20px;
 }
 
-.callus:hover,
-.callus-link:hover,
+.number {
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.number:hover,
+.email:hover,
 .footer-address:hover,
 .name-school:hover,
 .username:hover {
@@ -660,6 +665,7 @@ body {
     font-weight: 400;
     text-decoration: none;
     color: #000;
+    cursor: default;
 }
 
 .admin {
@@ -669,6 +675,7 @@ body {
 
 .email {
     font-weight: bold;
+    cursor: pointer;
 }
 
 .map {
