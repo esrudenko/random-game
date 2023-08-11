@@ -1,0 +1,59 @@
+.container__contacts {
+    @extend %padding-additional;
+}
+
+.our-contact {
+    @media (max-width: 1300px) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.contact {
+    @media (max-width: 1300px) {
+        padding-bottom: 100px;
+    }
+}
+
+.contact__information {
+    margin: 0;
+    @include font ($size: 2.0rem, $height: 4.0rem, $weight: 700);
+    padding-bottom: 20px;
+}
+
+.callus {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0 40px 0;
+    text-transform: capitalize;
+    cursor: default;
+
+    &__link {
+        text-decoration: none;
+        color: $color-text-dark;
+    }
+
+    &_hover:hover {
+        text-decoration: underline;
+        color: $color-primary;
+        @extend %transition;
+    }
+}
+
+.email {
+    font-weight: 700;
+}
+
+.map {
+    @media (max-width: 1300px) {
+        width: 696px;
+        height: 414px;
+        display: block;
+        margin: auto;
+    }
+
+    @media (max-width: 750px) {
+        width: 600px;
+    }
+}

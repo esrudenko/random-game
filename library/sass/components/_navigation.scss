@@ -1,0 +1,59 @@
+.navigation {
+    @include font($size: 2.0rem, $height: 5.0rem, $letter: 0);
+    @extend %transition;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+
+    >* {
+        margin: 0;
+    }
+
+    @include media-tablet {
+        position: fixed;
+        flex-direction: column;
+        background-color: $color-background;
+        color: $color-light;
+        width: 332px;
+        text-align: center;
+        padding: 0px 107px 100px 107px;
+        margin: 0;
+        right: 1024px;
+        top: 100px;
+        @extend %transition;
+        z-index: 20;
+
+        &.active {
+            margin: 0;
+            right: 13px;
+        }
+
+    }
+}
+
+.navigation__link {
+    text-decoration: none;
+    color: $color-light;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        color: $color-primary;
+        @extend %transition;
+    }
+}
+
+.hamburger-overlay {
+    display: none;
+
+    &.active {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+        background: transparent;
+    }
+}

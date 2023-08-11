@@ -1,0 +1,71 @@
+.container__coffee-shop {
+    @extend %padding-additional;
+}
+
+.coffee__text {
+    @include font ($size: 1.99rem, $height: 4.0rem, $letter: 0.2rem);
+    text-align: center;
+    margin: 0;
+    padding-bottom: 40px;
+
+}
+
+.prices {
+    @include media-tablet {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+
+    >* {
+        margin-bottom: 40px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.prices__items {
+    display: flex;
+    gap: 60px;
+
+    .price-line {
+        margin-top: 20px;
+    }
+}
+
+.price_coffee {
+    margin: 0;
+    width: 199px;
+}
+
+.value_coffee {
+    margin: 0;
+    @extend %font-primary;
+}
+
+.prices__desserts {
+    >* {
+        text-align: right;
+
+        &:first-child {
+
+            @include media-tablet {
+                padding-top: 40px;
+            }
+        }
+    }
+
+    .prices__items {
+        justify-content: flex-end;
+    }
+
+    .price_coffee {
+        width: 212px;
+    }
+}
