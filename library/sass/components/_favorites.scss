@@ -1,0 +1,103 @@
+$image-gap: 40px;
+
+.container__favorites {
+    @extend %padding-additional;
+}
+
+.favorites__text {
+    @include font ($size: 2.0rem, $weight: 700, $letter: normal);
+    margin: 42px 0;
+}
+
+.seasons {
+    display: flex;
+    text-align: right;
+    color: $color-text-dark;
+    @include font ($size: 2.0rem, $weight: 400, $letter: normal);
+    margin-top: -5px;
+}
+
+.radio-winter {
+    width: 115px;
+    margin-left: -8px;
+}
+
+.radio-spring {
+    width: 110px;
+    margin-left: 79px;
+
+    @media (max-width: 750px) {
+        margin-left: 40px;
+    }
+}
+
+.radio-summer {
+    width: 127px;
+    margin-left: 79px;
+
+    @media (max-width: 750px) {
+        margin-left: 40px;
+    }
+}
+
+.radio-autumn {
+    width: 126px;
+    margin-left: 74px;
+
+    @media (max-width: 750px) {
+        margin-left: 40px;
+    }
+}
+
+.form_radio {
+    display: flex;
+    height: 28px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.favorites-items {
+    @include media-tablet {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.book_description {
+    display: flex;
+    position: relative;
+    border: 1px solid $color-text-dark;
+    padding: 15px 20px;
+    margin-top: 40px;
+    width: 550px;
+    min-height: 555px;
+    margin-right: 45px;
+}
+
+.about-book {
+    display: flex;
+    flex-direction: column;
+}
+
+.description-book {
+    flex-grow: 1;
+    width: 357px;
+    margin: 0;
+    @include font ($size: 1.5rem, $height: 4.0rem);
+    text-transform: capitalize;
+    padding-top: 20px;
+}
+
+.img__book {
+    position: absolute;
+    right: -$image-gap;
+    bottom: 0;
+
+}
+
+.autumn,
+.summer,
+.spring {
+    display: none;
+}

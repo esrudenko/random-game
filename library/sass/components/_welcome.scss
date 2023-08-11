@@ -1,0 +1,28 @@
+.welcome {
+    height: 599px;
+    background: url(../img/Welcome.png), lightgray 50% / cover no-repeat;
+    background-position: center center;
+    background-size: 100% 600px;
+    margin-top: -20px;
+    overflow: hidden;
+
+    @include media-tablet {
+        background: url(../img/Welcome_768.png), lightgray 50% / cover no-repeat;
+        overflow: hidden;
+
+    }
+}
+
+.welcome-text {
+    margin: 0;
+    position: absolute;
+    text-align: center;
+    width: 600px;
+    color: $color-light;
+    background-color: $color-background;
+    @extend %font-primary;
+    @include font ($size: 4.0rem, $height: 5.0rem, $letter: 0.3rem);
+    text-transform: uppercase;
+    padding: 35px 40px;
+    margin-top: 220px;
+}

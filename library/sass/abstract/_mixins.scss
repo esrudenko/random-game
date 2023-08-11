@@ -1,0 +1,29 @@
+@mixin font ($size, $height: $size, $weight: 400, $style: normal, $letter: 0.2rem) {
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+    font-style: $style;
+    letter-spacing: $letter;
+}
+
+@mixin columns ($width) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    >* {
+        flex-basis: $width;
+    }
+}
+
+@mixin media-laptop {
+    @media (max-width: $content-width) {
+        @content;
+    }
+}
+
+@mixin media-tablet {
+    @media (max-width: $tablet-width) {
+        @content;
+    }
+}
