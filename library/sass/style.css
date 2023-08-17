@@ -431,6 +431,22 @@ ul {
   padding: 20px 20px 40px 20px;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0;
+  }
+}
 .container {
   max-width: 1440px;
   margin: 0 auto;
@@ -627,22 +643,21 @@ h6 {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-}
-
-.cirle-none-active {
   background-color: #000;
 }
-
-.cirle-active {
+.carousel_cirle.active {
   background-color: #BB945F;
+}
+.carousel_cirle.disabled {
+  opacity: 0.4;
 }
 
 .carousel-mobile {
   display: none;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1395px) {
   .carousel-mobile {
-    display: inline-block;
+    display: block;
   }
 }
 
@@ -874,31 +889,49 @@ h6 {
   .about-wrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: row;
     flex-wrap: nowrap;
   }
 }
 
-.arrow,
-.image-4,
-.image-5 {
-  display: none;
+.images-block {
+  display: flex;
+  width: 100%;
+  height: 560px;
+  overflow: hidden;
 }
-
 @media (max-width: 1395px) {
-  .image-2,
-  .image-3 {
-    display: none;
+  .images-block {
+    width: 450px;
   }
 }
 
+.images-slider {
+  display: none;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+}
+.images-slider.active {
+  display: flex;
+}
+
+.arrow {
+  display: none;
+}
 @media (max-width: 1395px) {
   .arrow {
     display: block;
     width: 24px;
     height: 24px;
     margin-top: 40px;
+    flex-grow: 1;
   }
+}
+
+.arrow-left.disabled,
+.arrow-right.disabled {
+  opacity: 0.3;
 }
 
 .carousel__pagination {
@@ -912,8 +945,8 @@ h6 {
   }
 }
 
-.carousel__buttons-mobile {
-  display: none;
+.container__favorites {
+  position: relative;
 }
 
 .favorites__text {
@@ -922,7 +955,15 @@ h6 {
   font-weight: 700;
   font-style: normal;
   letter-spacing: normal;
-  margin: 42px 0;
+  margin: 42px 0 0 0;
+}
+
+.radio-season {
+  position: sticky;
+  top: 0;
+  padding: 42px 0 20px 0;
+  background-color: #FFF;
+  z-index: 30;
 }
 
 .seasons {
@@ -975,12 +1016,20 @@ h6 {
 .form_radio {
   display: flex;
   height: 28px;
-  padding: 5px;
   cursor: pointer;
 }
 
+.favorites-items {
+  display: none;
+}
+.favorites-items.active {
+  display: flex;
+}
 @media (max-width: 1024px) {
   .favorites-items {
+    display: none;
+  }
+  .favorites-items.active {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -992,7 +1041,7 @@ h6 {
   position: relative;
   border: 1px solid #000;
   padding: 15px 20px;
-  margin-top: 40px;
+  margin-top: 20px;
   width: 550px;
   min-height: 555px;
   margin-right: 45px;
