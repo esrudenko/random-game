@@ -28,12 +28,65 @@
                 </ul>
             </nav>
             <img src="./img/icon_profile.svg" alt="icon-profile" class="icon icon-profile">
+            <div class="icon icon-authorization">
+                <p class="first-letters"></p>
+            </div>
             <div class="hamburger">
                 <span class="hamburger__line"></span>
                 <span class="hamburger__line"></span>
                 <span class="hamburger__line"></span>
             </div>
-            <div class="hamburger-overlay"></div>
+        </div>
+        <div class="hamburger-overlay"></div>
+        <div class="profile__block profile-noauth">
+            <p class="profile_title">Profile</p>
+            <div class="line line-profile"></div>
+            <p class="profile-link login">Log In</p>
+            <p class="profile-link register">Register</p>
+        </div>
+        <div class=" profile__block profile-withauth">
+            <p class="profile_title number-card">Profile</p>
+            <div class="line line-profile"></div>
+            <p class="profile-link myprofile">My profile</p>
+            <p class="profile-link logout">Log Out</p>
+        </div>
+        <div class="wrap-modal wrap-login">
+            <form action="file:///E:/RS/Education/esrudenko-JSFEPRESCHOOL2023Q2/library/index.html#authorization"
+                class="form-login">
+                <div class="modal_block modal-login">
+                    <img src="./img/close_btn.svg" alt="close_btn" class="close-btn close-login">
+                    <p class="title-login login-block">Login</p>
+                    <label for="email"><b class="uname-text login-block">E-mail or readers card</b></label>
+                    <input type="text" id="email" name="email" class="emaillog login-block" required autocomplete="off">
+                    <label for="psw"><b class="uname-text login-block">Password</b></label>
+                    <input type="password" id="psw" name="psw" class="psw login-block" required autocomplete="off">
+                    <button type="submit" class="button button-login login-block">Log In</button>
+                    <span class="link-text login-block">Don’t have an account? <a href="#"
+                            class="modal-link login-link login-block">Register</a></span>
+                </div>
+            </form>
+        </div>
+        <div class="wrap-modal wrap-register">
+            <form action="file:///E:/RS/Education/esrudenko-JSFEPRESCHOOL2023Q2/library/index.html#authorization"
+                class="form-register">
+                <div class="modal_block modal-register">
+                    <img src="./img/close_btn.svg" alt="close_btn" class="close-btn close-register">
+                    <p class="title-login register-block">Register</p>
+                    <label for="firstame"><b class="uname-text register-block">First name</b></label>
+                    <input type="text" name="firstame" id="firstame" class="register-block" required autocomplete="off">
+                    <label for="lasttame"><b class="uname-text register-block">Last name</b></label>
+                    <input type="text" name="lasttame" id="lasttame" class="register-block" required autocomplete="off">
+                    <label for="emailreg"><b class="uname-text register-block">E-mail</b></label>
+                    <input type="email" name="emailreg" id="emailreg" class="emailreg register-block" required
+                        autocomplete="off">
+                    <label for="password"><b class="uname-text register-block">Password</b></label>
+                    <input type="password" name="password" id="password" class="password register-block" required
+                        autocomplete="off">
+                    <button type="submit" class="button button-singup register-block">Sign Up</button>
+                    <span class="link-text register-block">Already have an account? <a href="#"
+                            class="modal-link register-link register-block">Login</a></span>
+                </div>
+            </form>
         </div>
     </header>
     <main class="main">
@@ -446,18 +499,36 @@
                         <div class="find-card_border">
                             <div class="card_border_colored">
                                 <p class="card_border-title">Brooklyn Public Library</p>
-                                <form>
+                                <form class="form-card">
                                     <div class="input-border input-border-name">
-                                        <input type="text" id="card-name" class="card-name" placeholder="Reader's name">
+                                        <input type="text" name="cardname" id="card-name" class="card-name"
+                                            placeholder="Reader's name" autocomplete="off">
                                     </div>
                                     <div class="input-border input-border-number">
-                                        <input type="text" id="card-number" class="card-number"
-                                            placeholder="Card number">
-                                    </div>
-                                    <div class="card-button_wrapper">
-                                        <button type="submit" class="button card-button">Check the card</button>
+                                        <input type="text" name="cardnumber" id="card-number" class="card-number"
+                                            placeholder="Card number" autocomplete="off">
                                     </div>
                                 </form>
+                                <div class="card-button_wrapper">
+                                    <button type="submit" class="button card-button">Check the card</button>
+                                </div>
+                                <div class="profile">
+                                    <div class="profile-card">
+                                        <p class="profile-card-title">Visits</p>
+                                        <img src="./img/Union.svg" class="union" alt="union">
+                                        <p class="profile-card-counter">23</p>
+                                    </div>
+                                    <div class="profile-card">
+                                        <p class="profile-card-title">Bonuses</p>
+                                        <img src="./img/Star.svg" class="star" alt="star">
+                                        <p class="profile-card-counter">1240</p>
+                                    </div>
+                                    <div class="profile-card">
+                                        <p class="profile-card-title">Books</p>
+                                        <img src="./img/book.svg" class="book" alt="book">
+                                        <p class="profile-card-counter">2</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -466,8 +537,8 @@
                         <p class="get-card_text">You will be able to see a reader card after logging into account or you
                             can register a new account</p>
                         <div class="button_account__wrapper">
-                            <button class="button button_account">Sign Up</button>
-                            <button class="button button_account">Log in</button>
+                            <button class="button button_account card-singup">Sign Up</button>
+                            <button class="button button_account card-login">Log in</button>
                         </div>
                     </div>
                 </div>

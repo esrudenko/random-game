@@ -1,0 +1,121 @@
+//Profile-Icon
+.profile__block {
+    display: none;
+    position: absolute;
+    width: 80px;
+    height: 115px;
+    right: 0px;
+    top: 59px;
+    background-color: $color-light;
+    color: $color-text-dark;
+    @include font ($size: 15px, $height: 20px, $letter: 0);
+    text-align: center;
+    margin-right: 20px;
+    padding: 5px 4px 20px 5px;
+    z-index: 20;
+
+    @include media-tablet {
+        margin-right: 105px;
+    }
+
+    .profile_title {
+        font-weight: 700;
+        margin: 0;
+        padding-bottom: 4px;
+    }
+
+    .profile-link {
+        &:hover {
+            text-decoration: underline;
+            color: $color-primary;
+            @extend %transition;
+        }
+    }
+
+    .register,
+    .logout {
+        margin-top: -5px;
+    }
+}
+
+.profile-noauth,
+.profile-withauth {
+    &.active {
+        display: block;
+    }
+}
+
+//Register
+
+.modal_block {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 250px;
+    background-color: $color-light;
+    color: $color-text-dark;
+    padding: 20px 25px;
+    margin-left: -125px;
+
+    .close-btn {
+        width: 15px;
+        height: 15px;
+        margin: -5px 0 0 195px;
+        cursor: pointer;
+    }
+
+    .title-login {
+        text-align: center;
+        @include font ($size: 20px, $letter: 0.4px);
+        @extend %font-primary;
+        text-transform: uppercase;
+        margin: -10px 0 8px 0;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    input {
+        width: 200px;
+        height: 20px;
+        border: 1px solid #BB945F;
+    }
+
+    .uname-text {
+        @include font ($size: 15px, $height: 20px, $letter: 0.3px);
+        margin: 0px;
+    }
+
+    .button-login,
+    .button-singup {
+        margin: 23px 0 10px 0;
+    }
+
+    .link-text {
+        @include font ($size: 10px, $letter: 0);
+    }
+
+    .modal-link {
+        color: $color-background;
+        @include font ($size: 10px, $weight: 700, $letter: 1px);
+        text-decoration-line: underline;
+        margin-left: 8px;
+    }
+}
+
+.modal-register {
+    margin-top: -191px;
+
+    &.active {
+        display: flex;
+    }
+}
+
+.modal-login {
+    margin-top: -131px;
+
+    &.active {
+        display: flex;
+    }
+}

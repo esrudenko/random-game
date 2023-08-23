@@ -67,6 +67,29 @@
     text-align: center;
 }
 
+.profile {
+    display: none;
+    justify-content: center;
+    gap: 35px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.profile-card-title,
+.profile-card-counter {
+    @include font ($size: 10px, $height: 20px, $letter: 0.2px);
+    margin: 0;
+
+}
+
+.profile-card-counter {
+    margin-top: -15px;
+}
+
+.union {
+    margin-top: -15px;
+}
+
 .get-card {
     display: flex;
     flex-direction: column;
