@@ -427,7 +427,7 @@ ul {
   font-family: "Inter", Verdana, sans-serif;
 }
 
-.container__library-card, .container__contacts, .container__coffee-shop, .container__favorites, .container__about, .header {
+.container__contacts, .container__coffee-shop, .container__about, .header {
   padding: 20px 20px 40px 20px;
 }
 
@@ -868,6 +868,9 @@ h6 {
   margin: 0;
   padding-bottom: 4px;
 }
+.profile__block .number-card {
+  font-size: 12px;
+}
 .profile__block .profile-link:hover {
   text-decoration: underline;
   color: #BB945F;
@@ -1125,6 +1128,7 @@ h6 {
 }
 
 .container__favorites {
+  padding: 20px 20px 20px 20px;
   position: relative;
 }
 
@@ -1224,10 +1228,9 @@ h6 {
   position: relative;
   border: 1px solid #000;
   padding: 15px 20px;
-  margin-top: 20px;
+  margin: 20px 45px 20px 0;
   width: 550px;
   min-height: 555px;
-  margin-right: 45px;
 }
 
 .about-book {
@@ -1379,6 +1382,9 @@ h6 {
   }
 }
 
+.container__library-card {
+  padding: 10px 20px 40px 20px;
+}
 @media (max-width: 1024px) {
   .container__library-card {
     text-align: center;

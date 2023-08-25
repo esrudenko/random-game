@@ -5,7 +5,7 @@ let hamburger = document.querySelector(".hamburger");
 let navOverlay = document.querySelector(".hamburger-overlay");
 //icons
 let iconProfile = document.querySelector('.icon-profile');
-let iconAutorotation = document.querySelector('.icon-authorization');
+let iconAuthorization = document.querySelector('.icon-authorization');
 let firstLetters = document.querySelector('.first-letters');
 let profileNoauth = document.querySelector('.profile-noauth');
 let profileWithauth = document.querySelector('.profile-withauth');
@@ -15,7 +15,7 @@ let register = document.querySelector('.register');
 //modal profile authorization
 let myprofile = document.querySelector('.myprofile');
 let logout = document.querySelector('.logout');
-let numberCard = document.querySelector('.number-card');
+let numberCardProfile = document.querySelector('.number-card');
 //modal Login
 let modalBlock = document.querySelector('.modal_block');
 let wrapLogin = document.querySelector('.wrap-login');
@@ -98,21 +98,21 @@ iconProfile.addEventListener("click", openProfileNoAuth);
 navOverlay.addEventListener("click", closeProfileNoAuth);
 
 function openProfileWithAuth() {
-    if (iconAutorotation.classList.contains("active")) {
+    if (iconAuthorization.classList.contains("active")) {
         closeProfileWithAuth();
     } else {
         closeHamburger();
-        iconAutorotation.classList.toggle("active");
+        iconAuthorization.classList.toggle("active");
         profileWithauth.classList.toggle("active");
         navOverlay.classList.toggle("active");
     }
 }
 function closeProfileWithAuth() {
-    iconAutorotation.classList.remove("active");
+    iconAuthorization.classList.remove("active");
     profileWithauth.classList.remove("active");
     navOverlay.classList.remove("active");
 }
-iconAutorotation.addEventListener("click", openProfileWithAuth);
+iconAuthorization.addEventListener("click", openProfileWithAuth);
 navOverlay.addEventListener("click", closeProfileWithAuth);
 
 //Modal REGISTER
@@ -160,7 +160,7 @@ function closeLogin(event) {
     } else if (event.target == loginBlock[7]) {
         openRegister();
     } else if (event.target == loginBlock[5]) {
-        autorotationPage();
+        authorizationPage();
     }
     else {
         modalLogin.classList.remove("active");
@@ -392,7 +392,7 @@ function registrationPage() {
         openRegister();
     } else {
         iconProfile.style.display = "none";
-        iconAutorotation.style.display = "block";
+        iconAuthorization.style.display = "block";
         firstLetters.textContent = `${firstLetterFirstName}` + `${firstLetterLastName}`
         modalRegister.classList.remove("active");
         wrapRegister.classList.remove("active");
@@ -401,12 +401,12 @@ function registrationPage() {
         location.reload()
     }
 }
-function autorotationPage() {
+function authorizationPage() {
     if ((formDataLogin.email.length == 0) || (formDataLogin.psw.length == 0)) {
         openLogin();
     } else {
         iconProfile.style.display = "none";
-        iconAutorotation.style.display = "block";
+        iconAuthorization.style.display = "block";
         firstLetters.textContent = `${firstLetterFirstName}` + `${firstLetterLastName}`;
         modalLogin.classList.remove("active");
         wrapLogin.classList.remove("active");
@@ -415,11 +415,11 @@ function autorotationPage() {
         location.reload()
     }
 }
-buttonLogin.addEventListener("click", autorotationPage);
+buttonLogin.addEventListener("click", authorizationPage);
 buttonSingup.addEventListener("click", registrationPage);
 
 function LibrariCardWithoutLogin() {
-    if (((formDataCard.cardname) == (`${formData.firstame}` + ' ' + `${formData.lasttame}`)) && (location.href.includes('#authorization') == false)) {
+    if (((formDataCard.cardname) == (`${formData.firstame}` + ' ' + `${formData.lasttame}`)) && (location.href.includes('#authorization') == false) && ((formDataCard.cardnumber) == (`${localStorage.numberCardProfile}`))) {
         cardButtonWrapper.style.display = "none";
         profile.style.display = "flex";
         setTimeout(() => {
@@ -436,8 +436,25 @@ function LibrariCardWithoutLogin() {
 cardButton.addEventListener("click", LibrariCardWithoutLogin);
 buttonBuy.forEach(n => n.addEventListener("click", openLogin));
 //
+
+function goRandom() {
+    let hexadecimalSystem = "0123456789ABCDEF";
+    let randomCardNumber = "";
+    while (randomCardNumber.length < 9) {
+        randomCardNumber += hexadecimalSystem[Math.floor(Math.random() * hexadecimalSystem.length)];
+    }
+    numberCardProfile.textContent = `${randomCardNumber}`;
+}
+
 if (location.href.includes('#authorization')) {
     iconProfile.style.display = "none";
-    iconAutorotation.style.display = "block";
-    firstLetters.textContent = `${firstLetterFirstName}` + `${firstLetterLastName}`
+    iconAuthorization.style.display = "block";
+    firstLetters.textContent = `${firstLetterFirstName}` + `${firstLetterLastName}`;
+    iconAuthorization.setAttribute('title', `${formData.firstame}` + " " + `${formData.lasttame}`);
+    numberCardProfile.textContent = localStorage.numberCardProfile;
+    if (localStorage.numberCardProfile.length < 1) {
+        goRandom()
+        localStorage.setItem(`numberCardProfile`, numberCardProfile.textContent);
+        localStorage.getItem(`numberCardProfile`);
+    }
 }

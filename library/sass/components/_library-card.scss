@@ -1,5 +1,5 @@
 .container__library-card {
-    @extend %padding-additional;
+    padding: 10px 20px 40px 20px;
 
     @include media-tablet {
         text-align: center;

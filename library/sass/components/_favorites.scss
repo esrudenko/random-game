@@ -1,7 +1,7 @@
 $image-gap: 40px;
 
 .container__favorites {
-    @extend %padding-additional;
+    padding: 20px 20px 20px 20px;
     position: relative;
 }
 
@@ -28,8 +28,6 @@ $image-gap: 40px;
     @include font ($size: 2.0rem, $weight: 400, $letter: normal);
     margin-top: -5px;
 }
-
-
 
 .radio-winter {
     width: 115px;
@@ -92,10 +90,9 @@ $image-gap: 40px;
     position: relative;
     border: 1px solid $color-text-dark;
     padding: 15px 20px;
-    margin-top: 20px;
+    margin: 20px 45px 20px 0;
     width: 550px;
     min-height: 555px;
-    margin-right: 45px;
 }
 
 .about-book {
