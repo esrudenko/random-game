@@ -123,3 +123,112 @@
         display: flex;
     }
 }
+
+.myprofile-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    width: 170px;
+    height: 400px;
+    background-color: $color-background;
+    @include font ($size: 20px, $height: 20px, $letter: 0);
+    text-transform: capitalize;
+
+    .myprofile-letter {
+        width: 80px;
+        height: 80px;
+        background-color: $color-light;
+        color: $color-primary;
+        margin: 0;
+        margin-bottom: 15px;
+        padding-top: 30px;
+    }
+
+    .myprofile-fullname {
+        width: 120px;
+        height: 30px;
+        background-color: $color-light;
+        color: $color-text-dark;
+        padding-top: 5px;
+        margin: 0;
+    }
+}
+
+.myprofile-information {
+    width: 430px;
+    height: 400px;
+    background-color: $color-light;
+    padding: 10px 25px 39px 20px;
+}
+
+.close-myprofile {
+    width: 15px;
+    height: 15px;
+    margin: -5px 0 0 370px;
+    cursor: pointer;
+}
+
+.title-myprofile {
+    @extend %font-primary;
+    @include font ($size: 40px, $height: 20px, $letter: 0.8px);
+    color: $color-text-dark;
+    margin: 0;
+    margin-top: -10px;
+    text-transform: uppercase;
+}
+
+.profile-icons {
+    display: flex;
+    color: $color-text-dark;
+    text-align: center;
+    gap: 20px;
+    padding: 40px 0 20px 0;
+}
+
+.profile-myprofile-title {
+    @include font ($size: 20px, $height: 20px, $letter: 0.4px);
+    text-transform: capitalize;
+    margin: 0;
+}
+
+.profile-myprofile-counter {
+    margin: 0;
+    @include font ($size: 10px, $height: 20px, $letter: 0.2px);
+}
+
+.rented-title {
+    color: $color-background;
+    @include font ($size: 25px, $height: 20px, $letter: 0.2px);
+    margin: 0;
+}
+
+.rented {
+    color: $color-text-dark;
+    @include font ($size: 20px, $height: 20px, $letter: 2px);
+    text-transform: capitalize;
+    margin: 0;
+    padding: 30px 0px 35px 30px;
+}
+
+.rented-book {
+    margin-bottom: 10px;
+}
+
+.number-card-myprofile {
+    display: flex;
+    color: $color-text-dark;
+    @include font ($size: 20px, $height: 20px, $letter: 0px);
+    gap: 15px;
+    margin-top: -5px;
+
+    >* {
+        margin: 0;
+    }
+}
+
+.number-copy {
+    color: $color-primary;
+}
