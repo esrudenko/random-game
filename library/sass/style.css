@@ -466,11 +466,21 @@ ul {
 }
 
 .wrap-register,
-.wrap-login {
+.wrap-login,
+.wrap-myprofile {
   z-index: -1;
 }
 .wrap-register.active,
-.wrap-login.active {
+.wrap-login.active,
+.wrap-myprofile.active {
+  z-index: 19;
+}
+
+.wrap-myprofile {
+  display: none;
+}
+.wrap-myprofile.active {
+  display: flex;
   z-index: 19;
 }
 
@@ -875,9 +885,17 @@ h6 {
   text-decoration: underline;
   color: #BB945F;
 }
-.profile__block .register,
-.profile__block .logout {
+.profile__block .register {
   margin-top: -5px;
+}
+.profile__block .logout {
+  border: none;
+  background-color: #FFF;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
 }
 
 .profile-noauth.active,

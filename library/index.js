@@ -24,7 +24,6 @@ let closeLoginButton = document.querySelector('.close-login');
 let loginBlock = document.querySelectorAll('.login-block');
 let pswLogin = document.getElementById('psw');
 let buttonLogin = document.querySelector('.button-login');
-
 //modal Register
 let wrapRegister = document.querySelector('.wrap-register');
 let modalRegister = document.querySelector('.modal-register');
@@ -32,6 +31,11 @@ let closeRegisterBatton = document.querySelector('.close-register');
 let registerBlock = document.querySelectorAll('.register-block');
 let password = document.getElementById('password');
 let buttonSingup = document.querySelector('.button-singup');
+//modal My Profile
+let wrapMyprofile = document.querySelector('.wrap-myprofile');
+let myprofileBlock = document.querySelectorAll('.myprofile-block')
+let closeMyprofileBatton = document.querySelector('.close-myprofile');
+
 
 let carouselButtons = document.querySelectorAll('.carousel__buttons');
 let point = document.querySelectorAll('.carousel_cirle');
@@ -62,7 +66,11 @@ hamburger.addEventListener("click", openHamburger);
 function openHamburger() {
     if (hamburger.classList.contains("active")) {
         closeHamburger();
-    } else {
+    } else if ((wrapLogin.classList.contains("active")) || (wrapRegister.classList.contains("active")) || (wrapMyprofile.classList.contains("active"))) {
+        closeHamburger();
+        navOverlay.classList.toggle("active");
+    }
+    else {
         closeProfileNoAuth();
         closeProfileWithAuth();
         hamburger.classList.toggle("active");
@@ -173,6 +181,25 @@ login.addEventListener("click", openLogin);
 cardLogin.addEventListener("click", openLogin);
 closeLoginButton.addEventListener("click", closeLogin);
 wrapLogin.addEventListener("click", closeLogin);
+//Modal MYPROFILE
+function openMyprofile() {
+    wrapMyprofile.classList.add("active");
+    closeProfileWithAuth();
+    navOverlay.classList.add("active");
+}
+function closeMyprofile(event) {
+    if ((event.target == myprofileBlock[0]) || (event.target == myprofileBlock[1]) || (event.target == myprofileBlock[2]) || (event.target == myprofileBlock[3]) || (event.target == myprofileBlock[4]) || (event.target == myprofileBlock[5]) || (event.target == myprofileBlock[6]) || (event.target == myprofileBlock[7]) || (event.target == myprofileBlock[8]) || (event.target == myprofileBlock[9]) || (event.target == myprofileBlock[10]) || (event.target == myprofileBlock[11]) || (event.target == myprofileBlock[12]) || (event.target == myprofileBlock[13]) || (event.target == myprofileBlock[14]) || (event.target == myprofileBlock[15]) || (event.target == myprofileBlock[16]) || (event.target == myprofileBlock[17]) || (event.target == myprofileBlock[18]) || (event.target == myprofileBlock[19]) || (event.target == myprofileBlock[20]) || (event.target == myprofileBlock[21]) || (event.target == myprofileBlock[22]) || (event.target == myprofileBlock[23]) || (event.target == myprofileBlock[24])) {
+        openMyprofile();
+    } else {
+        wrapMyprofile.classList.remove("active");
+        navOverlay.classList.remove("active");
+        closeProfileWithAuth();
+    }
+}
+myprofile.addEventListener("click", openMyprofile);
+closeMyprofileBatton.addEventListener("click", closeMyprofile);
+wrapMyprofile.addEventListener("click", closeMyprofile);
+logout.addEventListener("click", closeMyprofile);
 
 //Function FadeIn FadeOut
 function fadeIn(element, timeout) {

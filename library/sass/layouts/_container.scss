@@ -17,10 +17,20 @@
 }
 
 .wrap-register,
-.wrap-login {
+.wrap-login,
+.wrap-myprofile {
     z-index: -1;
 
     &.active {
+        z-index: 19;
+    }
+}
+
+.wrap-myprofile {
+    display: none;
+
+    &.active {
+        display: flex;
         z-index: 19;
     }
 }

@@ -36,9 +36,14 @@
         }
     }
 
-    .register,
-    .logout {
+    .register {
         margin-top: -5px;
+    }
+
+    .logout {
+        border: none;
+        background-color: $color-light;
+        @include font ($size: 15px, $height: 20px, $letter: 0);
     }
 }
 
