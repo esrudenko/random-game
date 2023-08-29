@@ -1111,6 +1111,8 @@ h6 {
 }
 
 .number-copy {
+  border: none;
+  width: 115px;
   color: #BB945F;
 }
 

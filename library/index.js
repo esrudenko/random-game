@@ -35,6 +35,10 @@ let buttonSingup = document.querySelector('.button-singup');
 let wrapMyprofile = document.querySelector('.wrap-myprofile');
 let myprofileBlock = document.querySelectorAll('.myprofile-block')
 let closeMyprofileBatton = document.querySelector('.close-myprofile');
+let myprofileLetter = document.querySelector('.myprofile-letter');
+let myprofileFullname = document.querySelector('.myprofile-fullname');
+let visitsCounter = document.querySelector('.visits-counter');
+let booksCounter = document.querySelector('.books-counter');
 
 
 let carouselButtons = document.querySelectorAll('.carousel__buttons');
@@ -57,6 +61,9 @@ let cardName = document.querySelector('.card-name');
 let cardButtonWrapper = document.querySelector('.card-button_wrapper');
 let cardButton = document.querySelector('.card-button');
 let profile = document.querySelector('.profile');
+let visitsCardCounter = document.querySelector('.visits-card-counter');
+let copyText = document.querySelector(".number-copy");
+let copyButton = document.querySelector(".copy");
 let cardSingup = document.querySelector('.card-singup');
 let cardLogin = document.querySelector('.card-login');
 
@@ -186,10 +193,21 @@ function openMyprofile() {
     wrapMyprofile.classList.add("active");
     closeProfileWithAuth();
     navOverlay.classList.add("active");
+    myprofileLetter.textContent = `${(formData.firstame).substr(0, 1).toUpperCase()}` + `${(formData.lasttame).substr(0, 1).toUpperCase()}`;
+    myprofileFullname.textContent = `${formData.firstame}` + " " + `${formData.lasttame}`;
+    if (myprofileFullname.textContent.length > 20) {
+        myprofileFullname.style.height = "50px";
+        myprofileFullname.style.fontSize = "14px";
+    } else if (myprofileFullname.textContent.length > 10) {
+        myprofileFullname.style.height = "50px";
+    }
 }
 function closeMyprofile(event) {
     if ((event.target == myprofileBlock[0]) || (event.target == myprofileBlock[1]) || (event.target == myprofileBlock[2]) || (event.target == myprofileBlock[3]) || (event.target == myprofileBlock[4]) || (event.target == myprofileBlock[5]) || (event.target == myprofileBlock[6]) || (event.target == myprofileBlock[7]) || (event.target == myprofileBlock[8]) || (event.target == myprofileBlock[9]) || (event.target == myprofileBlock[10]) || (event.target == myprofileBlock[11]) || (event.target == myprofileBlock[12]) || (event.target == myprofileBlock[13]) || (event.target == myprofileBlock[14]) || (event.target == myprofileBlock[15]) || (event.target == myprofileBlock[16]) || (event.target == myprofileBlock[17]) || (event.target == myprofileBlock[18]) || (event.target == myprofileBlock[19]) || (event.target == myprofileBlock[20]) || (event.target == myprofileBlock[21]) || (event.target == myprofileBlock[22]) || (event.target == myprofileBlock[23]) || (event.target == myprofileBlock[24])) {
         openMyprofile();
+    } else if (event.target == myprofileBlock[25]) {
+        console.log("ghbdtn")
+        copyNumberCard()
     } else {
         wrapMyprofile.classList.remove("active");
         navOverlay.classList.remove("active");
@@ -409,41 +427,39 @@ function isEmailValid(value) {
 }
 
 //Иконка пользователя
-let firstLetterLastName = (formData.lasttame).substr(0, 1).toUpperCase();
-let firstLetterFirstName = (formData.firstame).substr(0, 1).toUpperCase();
 function registrationPage() {
     if ((formData.firstame.length == 0) || (formData.lasttame.length == 0) || (formData.emailreg.length == 0) || (formData.password.length == 0)) {
         openRegister();
     } else if ((isEmailValid(input.value)) == false) {
-        alert('Password entered incorrectly');
-        openRegister();
+        alert('email entered incorrectly');
     } else {
-        iconProfile.style.display = "none";
-        iconAuthorization.style.display = "block";
-        firstLetters.textContent = `${firstLetterFirstName}` + `${firstLetterLastName}`
+        formRegister.setAttribute('action', 'file:///E:/RS/Education/esrudenko-JSFEPRESCHOOL2023Q2/library/index.html#authorization');
         modalRegister.classList.remove("active");
         wrapRegister.classList.remove("active");
         navOverlay.classList.remove("active");
         closeProfileNoAuth()
-        location.reload()
     }
 }
 function authorizationPage() {
     if ((formDataLogin.email.length == 0) || (formDataLogin.psw.length == 0)) {
         openLogin();
+    } else if (localStorage.getItem('formData') == null) {
+        alert("No information about your registration");
+        localStorage.removeItem('formDataLogin');
+    } else if ((formDataLogin.email === formData.emailreg) || (formDataLogin.email === localStorage.numberCardProfile)) {
+        if (formDataLogin.psw === formData.password) {
+            formLogin.setAttribute('action', 'file:///E:/RS/Education/esrudenko-JSFEPRESCHOOL2023Q2/library/index.html#authorization');
+            modalLogin.classList.remove("active");
+            wrapLogin.classList.remove("active");
+            navOverlay.classList.remove("active");
+            closeProfileNoAuth();
+            CounterOfVisits();
+        }
     } else {
-        iconProfile.style.display = "none";
-        iconAuthorization.style.display = "block";
-        firstLetters.textContent = `${firstLetterFirstName}` + `${firstLetterLastName}`;
-        modalLogin.classList.remove("active");
-        wrapLogin.classList.remove("active");
-        navOverlay.classList.remove("active");
-        closeProfileNoAuth()
-        location.reload()
+        alert("No information about your registration");
+        localStorage.removeItem('formDataLogin');
     }
 }
-buttonLogin.addEventListener("click", authorizationPage);
-buttonSingup.addEventListener("click", registrationPage);
 
 function LibrariCardWithoutLogin() {
     if (((formDataCard.cardname) == (`${formData.firstame}` + ' ' + `${formData.lasttame}`)) && (location.href.includes('#authorization') == false) && ((formDataCard.cardnumber) == (`${localStorage.numberCardProfile}`))) {
@@ -476,12 +492,34 @@ function goRandom() {
 if (location.href.includes('#authorization')) {
     iconProfile.style.display = "none";
     iconAuthorization.style.display = "block";
-    firstLetters.textContent = `${firstLetterFirstName}` + `${firstLetterLastName}`;
+    firstLetters.textContent = `${(formData.firstame).substr(0, 1).toUpperCase()}` + `${(formData.lasttame).substr(0, 1).toUpperCase()}`;
     iconAuthorization.setAttribute('title', `${formData.firstame}` + " " + `${formData.lasttame}`);
     numberCardProfile.textContent = localStorage.numberCardProfile;
-    if (localStorage.numberCardProfile.length < 1) {
+    cardButtonWrapper.style.display = "none";
+    profile.style.display = "flex";
+    if (localStorage.getItem('numberCardProfile') == null) {
         goRandom()
         localStorage.setItem(`numberCardProfile`, numberCardProfile.textContent);
         localStorage.getItem(`numberCardProfile`);
     }
+}
+
+//Visits Counter
+visitsCounter.textContent = localStorage.visitsCounter;
+visitsCardCounter.textContent = localStorage.visitsCounter;
+let count = visitsCounter.textContent;
+function CounterOfVisits() {
+    visitsCounter.textContent = '1';
+    count++;
+    visitsCounter.textContent = count;
+    localStorage.setItem(`visitsCounter`, visitsCounter.textContent);
+    localStorage.getItem(`visitsCounter`);
+};
+
+//Copy Number Card
+copyText.setAttribute('value', `${localStorage.numberCardProfile}`);
+function copyNumberCard() {
+    copyText.select();
+    document.execCommand("copy");
+    alert("Copied the text");
 }
