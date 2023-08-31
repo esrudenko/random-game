@@ -208,18 +208,25 @@
     color: $color-background;
     @include font ($size: 25px, $height: 20px, $letter: 0.2px);
     margin: 0;
+    padding-bottom: 30px;
 }
 
 .rented {
     color: $color-text-dark;
     @include font ($size: 20px, $height: 20px, $letter: 2px);
-    text-transform: capitalize;
+    width: 385px;
+    height: 90px;
     margin: 0;
-    padding: 30px 0px 35px 30px;
+    overflow: auto;
+    white-space: nowrap;
+    padding-left: 33px;
+    text-transform: capitalize;
 }
 
 .rented-book {
+    @include font ($size: 20px, $height: 20px, $letter: 2px);
     margin-bottom: 10px;
+    list-style: disc;
 }
 
 .number-card-myprofile {
@@ -228,6 +235,7 @@
     @include font ($size: 20px, $height: 20px, $letter: 0px);
     gap: 15px;
     margin-top: -5px;
+    padding-top: 5px;
 
     >* {
         margin: 0;

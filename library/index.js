@@ -40,7 +40,6 @@ let myprofileFullname = document.querySelector('.myprofile-fullname');
 let visitsCounter = document.querySelector('.visits-counter');
 let booksCounter = document.querySelector('.books-counter');
 
-
 let carouselButtons = document.querySelectorAll('.carousel__buttons');
 let point = document.querySelectorAll('.carousel_cirle');
 let imagesSlider = document.querySelectorAll('.images-slider');
@@ -55,6 +54,7 @@ let summer = document.querySelector('.summer');
 let autumn = document.querySelector('.autumn');
 
 let buttonBuy = document.querySelectorAll('.button__buy');
+let nameBook = document.querySelectorAll('.name-book');
 
 let cardNumber = document.querySelector('.card-number');
 let cardName = document.querySelector('.card-name');
@@ -62,6 +62,7 @@ let cardButtonWrapper = document.querySelector('.card-button_wrapper');
 let cardButton = document.querySelector('.card-button');
 let profile = document.querySelector('.profile');
 let visitsCardCounter = document.querySelector('.visits-card-counter');
+let booksCardCounter = document.querySelector('.books-card-counter');
 let copyText = document.querySelector(".number-copy");
 let copyButton = document.querySelector(".copy");
 let cardSingup = document.querySelector('.card-singup');
@@ -203,9 +204,9 @@ function openMyprofile() {
     }
 }
 function closeMyprofile(event) {
-    if ((event.target == myprofileBlock[0]) || (event.target == myprofileBlock[1]) || (event.target == myprofileBlock[2]) || (event.target == myprofileBlock[3]) || (event.target == myprofileBlock[4]) || (event.target == myprofileBlock[5]) || (event.target == myprofileBlock[6]) || (event.target == myprofileBlock[7]) || (event.target == myprofileBlock[8]) || (event.target == myprofileBlock[9]) || (event.target == myprofileBlock[10]) || (event.target == myprofileBlock[11]) || (event.target == myprofileBlock[12]) || (event.target == myprofileBlock[13]) || (event.target == myprofileBlock[14]) || (event.target == myprofileBlock[15]) || (event.target == myprofileBlock[16]) || (event.target == myprofileBlock[17]) || (event.target == myprofileBlock[18]) || (event.target == myprofileBlock[19]) || (event.target == myprofileBlock[20]) || (event.target == myprofileBlock[21]) || (event.target == myprofileBlock[22]) || (event.target == myprofileBlock[23]) || (event.target == myprofileBlock[24])) {
+    if ((event.target == myprofileBlock[0]) || (event.target == myprofileBlock[1]) || (event.target == myprofileBlock[2]) || (event.target == myprofileBlock[3]) || (event.target == myprofileBlock[4]) || (event.target == myprofileBlock[5]) || (event.target == myprofileBlock[6]) || (event.target == myprofileBlock[7]) || (event.target == myprofileBlock[8]) || (event.target == myprofileBlock[9]) || (event.target == myprofileBlock[10]) || (event.target == myprofileBlock[11]) || (event.target == myprofileBlock[12]) || (event.target == myprofileBlock[13]) || (event.target == myprofileBlock[14]) || (event.target == myprofileBlock[15]) || (event.target == myprofileBlock[16]) || (event.target == myprofileBlock[17]) || (event.target == myprofileBlock[18]) || (event.target == myprofileBlock[19]) || (event.target == myprofileBlock[20]) || (event.target == myprofileBlock[21]) || (event.target == myprofileBlock[22])) {
         openMyprofile();
-    } else if (event.target == myprofileBlock[25]) {
+    } else if (event.target == myprofileBlock[23]) {
         console.log("ghbdtn")
         copyNumberCard()
     } else {
@@ -477,9 +478,18 @@ function LibrariCardWithoutLogin() {
     }
 }
 cardButton.addEventListener("click", LibrariCardWithoutLogin);
-buttonBuy.forEach(n => n.addEventListener("click", openLogin));
-//
+buttonBuy.forEach(n => n.addEventListener("click", buyBook));
+function buyBook() {
+    if (location.href.includes('#authorization')) {
+        this.setAttribute('disabled', '');
+        this.textContent = 'Own';
+        localStorage.setItem(`${this.id}`, this.textContent);
+        OwnBooks();
+    } else { openLogin() }
+}
 
+
+// Random Number Card
 function goRandom() {
     let hexadecimalSystem = "0123456789ABCDEF";
     let randomCardNumber = "";
@@ -502,6 +512,7 @@ if (location.href.includes('#authorization')) {
         localStorage.setItem(`numberCardProfile`, numberCardProfile.textContent);
         localStorage.getItem(`numberCardProfile`);
     }
+    OwnBooks();
 }
 
 //Visits Counter
@@ -515,6 +526,26 @@ function CounterOfVisits() {
     localStorage.setItem(`visitsCounter`, visitsCounter.textContent);
     localStorage.getItem(`visitsCounter`);
 };
+
+//Books Counter
+booksCounter.textContent = localStorage.BooksCounter;
+booksCardCounter.textContent = localStorage.BooksCounter;
+function OwnBooks() {
+    let counterB = 0;
+    for (let i = 1; i < 17; i++) {
+        if (localStorage.getItem('buy-book-' + `${i}`) == 'Own') {
+            buttonBuy[i - 1].setAttribute('disabled', '');
+            buttonBuy[i - 1].textContent = 'Own';
+            counterB = counterB + 1;
+
+            let li = document.createElement('li');
+            li.classList.add('rented-book')
+            li.appendChild(document.createTextNode(`${(nameBook[i - 1].textContent).replace('By', ',')}`));
+            document.querySelector('.rented').appendChild(li);
+        }
+    }
+    localStorage.setItem(`BooksCounter`, counterB);
+}
 
 //Copy Number Card
 copyText.setAttribute('value', `${localStorage.numberCardProfile}`);
