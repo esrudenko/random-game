@@ -476,16 +476,14 @@ ul {
   z-index: 19;
 }
 
-.wrap-myprofile {
+.wrap-myprofile,
+.wrap-card {
   display: none;
 }
-.wrap-myprofile.active {
+.wrap-myprofile.active,
+.wrap-card.active {
   display: flex;
   z-index: 19;
-}
-
-.wrap-modal {
-  flex-direction: column;
 }
 
 .layout-3-column {
@@ -1123,6 +1121,7 @@ h6 {
 }
 
 .modal-card {
+  flex-direction: column;
   width: 640px;
   z-index: 1000;
   position: absolute;
@@ -1138,7 +1137,7 @@ h6 {
   font-style: normal;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  padding: 30px 25px 15px 129px;
+  padding: 5px 0px 15px 138px;
 }
 .modal-card .buy-card-text {
   text-align: center;
@@ -1147,6 +1146,7 @@ h6 {
 }
 .modal-card .close-card {
   margin: 20px 0px 0px 103px;
+  cursor: pointer;
 }
 .modal-card .buy-card-info {
   display: flex;
@@ -1162,7 +1162,7 @@ h6 {
   font-weight: 400;
   font-style: normal;
   letter-spacing: 0px;
-  margin: 30px 0px 0px 40px;
+  margin: 30px 0px 0px 35px;
 }
 .modal-card .buy-card-info .buy-card-inputs input {
   height: 20px;

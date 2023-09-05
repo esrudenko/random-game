@@ -250,6 +250,7 @@
 
 
 .modal-card {
+    flex-direction: column;
     width: 640px;
     z-index: 1000;
     position: absolute;
@@ -262,7 +263,7 @@
         @include font($size: 40px, $height: 20px, $letter: 0.8px);
         @extend %font-primary;
         text-transform: uppercase;
-        padding: 30px 25px 15px 129px;
+        padding: 5px 0px 15px 138px;
     }
 
     .buy-card-text {
@@ -273,6 +274,7 @@
 
     .close-card {
         margin: 20px 0px 0px 103px;
+        cursor: pointer;
     }
 
     .buy-card-info {
@@ -286,7 +288,7 @@
             color: $color-text-dark;
             @include font($size: 15px, $height: 20px, $letter: 0px);
             @extend %font-additional;
-            margin: 30px 0px 0px 40px;
+            margin: 30px 0px 0px 35px;
 
             input {
                 height: 20px;

@@ -26,15 +26,12 @@
     }
 }
 
-.wrap-myprofile {
+.wrap-myprofile,
+.wrap-card {
     display: none;
 
     &.active {
         display: flex;
         z-index: 19;
     }
-}
-
-.wrap-modal {
-    flex-direction: column;
 }

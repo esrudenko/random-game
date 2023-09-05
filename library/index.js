@@ -39,6 +39,14 @@ let myprofileLetter = document.querySelector('.myprofile-letter');
 let myprofileFullname = document.querySelector('.myprofile-fullname');
 let visitsCounter = document.querySelector('.visits-counter');
 let booksCounter = document.querySelector('.books-counter');
+//modal Buy a Library Card
+let wrapCard = document.querySelector('.wrap-card');
+let cardBlock = document.querySelectorAll('.card-block')
+let closeCardBatton = document.querySelector('.close-card');
+let CardNumber = document.querySelector('.input-card-number');
+let CardCode = document.querySelector('.input-card-code');
+let CardCode2 = document.querySelector('.input-card-code-2');
+let CardCvc = document.querySelector('.input-card-cvc');
 
 let carouselButtons = document.querySelectorAll('.carousel__buttons');
 let point = document.querySelectorAll('.carousel_cirle');
@@ -154,6 +162,7 @@ function closeRegister(event) {
         wrapRegister.classList.remove("active");
         navOverlay.classList.remove("active");
         closeProfileNoAuth();
+        CounterOfVisits();
     }
 }
 register.addEventListener("click", openRegister);
@@ -207,7 +216,6 @@ function closeMyprofile(event) {
     if ((event.target == myprofileBlock[0]) || (event.target == myprofileBlock[1]) || (event.target == myprofileBlock[2]) || (event.target == myprofileBlock[3]) || (event.target == myprofileBlock[4]) || (event.target == myprofileBlock[5]) || (event.target == myprofileBlock[6]) || (event.target == myprofileBlock[7]) || (event.target == myprofileBlock[8]) || (event.target == myprofileBlock[9]) || (event.target == myprofileBlock[10]) || (event.target == myprofileBlock[11]) || (event.target == myprofileBlock[12]) || (event.target == myprofileBlock[13]) || (event.target == myprofileBlock[14]) || (event.target == myprofileBlock[15]) || (event.target == myprofileBlock[16]) || (event.target == myprofileBlock[17]) || (event.target == myprofileBlock[18]) || (event.target == myprofileBlock[19]) || (event.target == myprofileBlock[20]) || (event.target == myprofileBlock[21]) || (event.target == myprofileBlock[22])) {
         openMyprofile();
     } else if (event.target == myprofileBlock[23]) {
-        console.log("ghbdtn")
         copyNumberCard()
     } else {
         wrapMyprofile.classList.remove("active");
@@ -219,6 +227,51 @@ myprofile.addEventListener("click", openMyprofile);
 closeMyprofileBatton.addEventListener("click", closeMyprofile);
 wrapMyprofile.addEventListener("click", closeMyprofile);
 logout.addEventListener("click", closeMyprofile);
+//Modal BUY A LIBRARY CARD
+function openBuyCard() {
+    wrapCard.classList.add("active");
+    navOverlay.classList.add("active");
+}
+function closeBuyCard(event) {
+    if ((event.target == cardBlock[0]) || (event.target == cardBlock[1]) || (event.target == cardBlock[2]) || (event.target == cardBlock[3]) || (event.target == cardBlock[4]) || (event.target == cardBlock[5]) || (event.target == cardBlock[6]) || (event.target == cardBlock[7]) || (event.target == cardBlock[8]) || (event.target == cardBlock[9]) || (event.target == cardBlock[10]) || (event.target == cardBlock[11]) || (event.target == cardBlock[12]) || (event.target == cardBlock[13]) || (event.target == cardBlock[14]) || (event.target == cardBlock[15]) || (event.target == cardBlock[16]) || (event.target == cardBlock[17]) || (event.target == cardBlock[18]) || (event.target == cardBlock[19]) || (event.target == cardBlock[20]) || (event.target == cardBlock[22]) || (event.target == cardBlock[23])) {
+        openBuyCard();
+    } else if ((event.target == cardBlock[21])) {
+        if (formDataBankCard.bankcard.length < 16) {
+            alert("Card Number mustn't contain less than 16 digits");
+            openBuyCard();
+        } else if (formDataBankCard.expirationcode.length < 2) {
+            alert("Expiration code mustn't contain less than 2 digits");
+            openBuyCard();
+        } else if (formDataBankCard.expirationcode2.length < 2) {
+            alert("Expiration code mustn't contain less than 2 digits");
+            openBuyCard();
+        } else if (formDataBankCard.cvc.length < 3) {
+            alert("CVC mustn't contain less than 3 digits");
+            openBuyCard();
+        } else if ((typeof formDataBankCard['cardholdername'] === "undefined") || (formDataBankCard.cardholdername.length < 1)) {
+            alert("Input 'Cardholder name' mustn't be empty");
+            openBuyCard();
+        } else if ((typeof formDataBankCard['postalcode'] === "undefined") || (formDataBankCard.postalcode.length < 1)) {
+            alert("Input 'Postal code' mustn't be empty");
+            openBuyCard();
+        } else if ((typeof formDataBankCard['town'] === "undefined") || (formDataBankCard.town.length < 1)) {
+            alert("Input 'City / Town' mustn't be empty");
+            openBuyCard();
+        } else {
+            document.querySelector(".expectation").setAttribute('disabled', '');
+            document.querySelector(".expectation").textContent = 'Own';
+            localStorage.setItem(`${document.querySelector(".expectation").id}`, document.querySelector(".expectation").textContent);
+            wrapCard.classList.remove("active");
+            navOverlay.classList.remove("active");
+            location.reload();
+        }
+    } else {
+        wrapCard.classList.remove("active");
+        navOverlay.classList.remove("active");
+        localStorage.removeItem('formDataBankCard');
+    }
+}
+wrapCard.addEventListener("click", closeBuyCard);
 
 //Function FadeIn FadeOut
 function fadeIn(element, timeout) {
@@ -363,11 +416,26 @@ function inputPassword(e) {
     if (this.value.length > 8) { alert("Password mustn't be more than 8 characters") }
     this.value = this.value.substr(0, 8)
 };
-
+function inputCardNumber(e) {
+    if (this.value.length > 16) { alert("Card Number mustn't contain more than 16 digits") }
+    this.value = this.value.substr(0, 16)
+};
+function inputCardCode(e) {
+    if (this.value.length > 2) { alert("Expiration code mustn't contain more than 2 digits") }
+    this.value = this.value.substr(0, 2)
+};
+function inputcCardCvc(e) {
+    if (this.value.length > 3) { alert("CVC mustn't contain more than 3 digits") }
+    this.value = this.value.substr(0, 3)
+};
 cardNumber.addEventListener('input', inputCard);
 cardName.addEventListener('input', inputCard);
 password.addEventListener('input', inputPassword);
 pswLogin.addEventListener('input', inputPassword);
+CardNumber.addEventListener('input', inputCardNumber);
+CardCode.addEventListener('input', inputCardCode);
+CardCode2.addEventListener('input', inputCardCode);
+CardCvc.addEventListener('input', inputcCardCvc);
 
 //LOCALSTORAGE Register
 let formData = {};
@@ -418,6 +486,22 @@ if (localStorage.getItem('formDataCard')) {
 }
 console.log(formDataCard)
 
+//LOCALSTORAGE Buy a Library Card
+let formDataBankCard = {};
+let formBankCard = document.querySelector('.bank-card');
+//получить данные из input
+formBankCard.addEventListener('input', function (event) {
+    formDataBankCard[event.target.name] = event.target.value;
+    localStorage.setItem('formDataBankCard', JSON.stringify(formDataBankCard));
+});
+//восстановить данные
+if (localStorage.getItem('formDataBankCard')) {
+    formDataBankCard = JSON.parse(localStorage.getItem('formDataBankCard'));
+    for (let key in formDataBankCard) {
+        formBankCard.elements[key].value = formDataBankCard[key];
+    }
+}
+console.log(formDataBankCard)
 
 //Валидация email
 const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
@@ -431,10 +515,13 @@ function isEmailValid(value) {
 function registrationPage() {
     if ((formData.firstame.length == 0) || (formData.lasttame.length == 0) || (formData.emailreg.length == 0) || (formData.password.length == 0)) {
         openRegister();
-    } else if ((isEmailValid(input.value)) == false) {
+    } else if ((formData.firstame == 0) || (formData.lasttame.length == 0) || (formData.emailreg.length == 0) || (formData.password.length == 0)) {
+        openRegister();
+    }
+    else if ((isEmailValid(input.value)) == false) {
         alert('email entered incorrectly');
     } else {
-        formRegister.setAttribute('action', 'file:///E:/RS/Education/esrudenko-JSFEPRESCHOOL2023Q2/library/index.html#authorization');
+        formRegister.setAttribute('action', 'https://rolling-scopes-school.github.io/esrudenko-JSFEPRESCHOOL2023Q2/library/#authorization');
         modalRegister.classList.remove("active");
         wrapRegister.classList.remove("active");
         navOverlay.classList.remove("active");
@@ -449,7 +536,7 @@ function authorizationPage() {
         localStorage.removeItem('formDataLogin');
     } else if ((formDataLogin.email === formData.emailreg) || (formDataLogin.email === localStorage.numberCardProfile)) {
         if (formDataLogin.psw === formData.password) {
-            formLogin.setAttribute('action', 'file:///E:/RS/Education/esrudenko-JSFEPRESCHOOL2023Q2/library/index.html#authorization');
+            formLogin.setAttribute('action', 'https://rolling-scopes-school.github.io/esrudenko-JSFEPRESCHOOL2023Q2/library/#authorization');
             modalLogin.classList.remove("active");
             wrapLogin.classList.remove("active");
             navOverlay.classList.remove("active");
@@ -481,11 +568,17 @@ cardButton.addEventListener("click", LibrariCardWithoutLogin);
 buttonBuy.forEach(n => n.addEventListener("click", buyBook));
 function buyBook() {
     if (location.href.includes('#authorization')) {
-        this.setAttribute('disabled', '');
-        this.textContent = 'Own';
-        localStorage.setItem(`${this.id}`, this.textContent);
-        OwnBooks();
-    } else { openLogin() }
+        if (localStorage.getItem('formDataBankCard') == null) {
+            this.classList.add("expectation");
+            openBuyCard();
+        } else {
+            this.setAttribute('disabled', '');
+            this.textContent = 'Own';
+            localStorage.setItem(`${this.id}`, this.textContent);
+            OwnBooks();
+            location.reload();
+        }
+    } else { openLogin(); }
 }
 
 
@@ -513,18 +606,21 @@ if (location.href.includes('#authorization')) {
         localStorage.getItem(`numberCardProfile`);
     }
     OwnBooks();
+    if ((typeof formDataBankCard['bankcard'] === "undefined") || (formDataBankCard.bankcard.length < 1) || (typeof formDataBankCard['expirationcode'] === "undefined") || (formDataBankCard.expirationcode.length < 1) || (typeof formDataBankCard['expirationcode2'] === "undefined") || (formDataBankCard.expirationcode2.length < 1) || (typeof formDataBankCard['cvc'] === "undefined") || (formDataBankCard.cvc.length < 1) || (typeof formDataBankCard['cardholdername'] === "undefined") || (formDataBankCard.cardholdername.length < 1) || (typeof formDataBankCard['postalcode'] === "undefined") || (formDataBankCard.postalcode.length < 1) || (typeof formDataBankCard['town'] === "undefined") || (formDataBankCard.town.length < 1)) {
+        localStorage.removeItem('formDataBankCard');
+    }
 }
 
 //Visits Counter
-visitsCounter.textContent = localStorage.visitsCounter;
-visitsCardCounter.textContent = localStorage.visitsCounter;
+visitsCounter.textContent = localStorage.VisitsCounter;
+visitsCardCounter.textContent = localStorage.VisitsCounter;
 let count = visitsCounter.textContent;
 function CounterOfVisits() {
     visitsCounter.textContent = '1';
     count++;
     visitsCounter.textContent = count;
-    localStorage.setItem(`visitsCounter`, visitsCounter.textContent);
-    localStorage.getItem(`visitsCounter`);
+    localStorage.setItem(`VisitsCounter`, visitsCounter.textContent);
+    localStorage.getItem(`VisitsCounter`);
 };
 
 //Books Counter
