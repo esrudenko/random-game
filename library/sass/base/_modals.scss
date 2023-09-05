@@ -1,0 +1,336 @@
+//Profile-Icon
+.profile__block {
+    display: none;
+    position: absolute;
+    width: 80px;
+    height: 115px;
+    right: 0px;
+    top: 59px;
+    background-color: $color-light;
+    color: $color-text-dark;
+    @include font ($size: 15px, $height: 20px, $letter: 0);
+    text-align: center;
+    margin-right: 20px;
+    padding: 5px 4px 20px 5px;
+    z-index: 20;
+
+    @include media-tablet {
+        margin-right: 105px;
+    }
+
+    .profile_title {
+        font-weight: 700;
+        margin: 0;
+        padding-bottom: 4px;
+    }
+
+    .number-card {
+        font-size: 12px;
+    }
+
+    .profile-link {
+        &:hover {
+            text-decoration: underline;
+            color: $color-primary;
+            @extend %transition;
+        }
+    }
+
+    .register {
+        margin-top: -5px;
+    }
+
+    .logout {
+        border: none;
+        background-color: $color-light;
+        @include font ($size: 15px, $height: 20px, $letter: 0);
+    }
+}
+
+.profile-noauth,
+.profile-withauth {
+    &.active {
+        display: block;
+    }
+}
+
+//Register
+
+.modal_block {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    width: 250px;
+    background-color: $color-light;
+    color: $color-text-dark;
+    padding: 20px 25px;
+    margin-left: -125px;
+
+    .close-btn {
+        width: 15px;
+        height: 15px;
+        margin: -5px 0 0 195px;
+        cursor: pointer;
+    }
+
+    .title-login {
+        text-align: center;
+        @include font ($size: 20px, $letter: 0.4px);
+        @extend %font-primary;
+        text-transform: uppercase;
+        margin: -10px 0 8px 0;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    input {
+        width: 200px;
+        height: 20px;
+        border: 1px solid #BB945F;
+    }
+
+    .uname-text {
+        @include font ($size: 15px, $height: 20px, $letter: 0.3px);
+        margin: 0px;
+    }
+
+    .button-login,
+    .button-singup {
+        margin: 23px 0 10px 0;
+    }
+
+    .link-text {
+        @include font ($size: 10px, $letter: 0);
+    }
+
+    .modal-link {
+        color: $color-background;
+        @include font ($size: 10px, $weight: 700, $letter: 1px);
+        text-decoration-line: underline;
+        margin-left: 8px;
+    }
+}
+
+.modal-register {
+    margin-top: -191px;
+
+    &.active {
+        display: flex;
+    }
+}
+
+.modal-login {
+    margin-top: -131px;
+
+    &.active {
+        display: flex;
+    }
+}
+
+.myprofile-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    width: 170px;
+    height: 400px;
+    background-color: $color-background;
+    @include font ($size: 20px, $height: 20px, $letter: 0);
+    text-transform: capitalize;
+
+    .myprofile-letter {
+        width: 80px;
+        height: 80px;
+        background-color: $color-light;
+        color: $color-primary;
+        margin: 0;
+        margin-bottom: 15px;
+        padding-top: 30px;
+    }
+
+    .myprofile-fullname {
+        width: 120px;
+        height: 30px;
+        background-color: $color-light;
+        color: $color-text-dark;
+        padding-top: 5px;
+        margin: 0;
+    }
+}
+
+.myprofile-information {
+    width: 430px;
+    height: 400px;
+    background-color: $color-light;
+    padding: 10px 25px 39px 20px;
+
+    .close-myprofile {
+        width: 15px;
+        height: 15px;
+        margin: -5px 0 0 370px;
+        cursor: pointer;
+    }
+
+    .title-myprofile {
+        @extend %font-primary;
+        @include font ($size: 40px, $height: 20px, $letter: 0.8px);
+        color: $color-text-dark;
+        margin: 0;
+        margin-top: -10px;
+        text-transform: uppercase;
+    }
+
+    .profile-icons {
+        display: flex;
+        color: $color-text-dark;
+        text-align: center;
+        gap: 20px;
+        padding: 40px 0 20px 0;
+    }
+
+    .profile-myprofile-title {
+        @include font ($size: 20px, $height: 20px, $letter: 0.4px);
+        text-transform: capitalize;
+        margin: 0;
+    }
+
+    .profile-myprofile-counter {
+        margin: 0;
+        @include font ($size: 10px, $height: 20px, $letter: 0.2px);
+    }
+
+    .rented-title {
+        color: $color-background;
+        @include font ($size: 25px, $height: 20px, $letter: 0.2px);
+        margin: 0;
+        padding-bottom: 30px;
+    }
+
+    .rented {
+        color: $color-text-dark;
+        @include font ($size: 20px, $height: 20px, $letter: 2px);
+        width: 385px;
+        height: 90px;
+        margin: 0;
+        overflow: auto;
+        white-space: nowrap;
+        padding-left: 33px;
+        text-transform: capitalize;
+    }
+
+    .rented-book {
+        @include font ($size: 20px, $height: 20px, $letter: 2px);
+        margin-bottom: 10px;
+        list-style: disc;
+    }
+
+    .number-card-myprofile {
+        display: flex;
+        color: $color-text-dark;
+        @include font ($size: 20px, $height: 20px, $letter: 0px);
+        gap: 15px;
+        margin-top: -5px;
+        padding-top: 5px;
+
+        >* {
+            margin: 0;
+        }
+    }
+
+    .number-copy {
+        border: none;
+        width: 115px;
+        color: $color-primary;
+    }
+}
+
+
+.modal-card {
+    flex-direction: column;
+    width: 640px;
+    z-index: 1000;
+    position: absolute;
+
+    .buy-card-title {
+        display: flex;
+        width: 100%;
+        background-color: $color-background;
+        color: $color-light;
+        @include font($size: 40px, $height: 20px, $letter: 0.8px);
+        @extend %font-primary;
+        text-transform: uppercase;
+        padding: 5px 0px 15px 138px;
+    }
+
+    .buy-card-text {
+        text-align: center;
+        margin: 0;
+        margin-top: 15px;
+    }
+
+    .close-card {
+        margin: 20px 0px 0px 103px;
+        cursor: pointer;
+    }
+
+    .buy-card-info {
+        display: flex;
+        background-color: $color-light;
+        width: 100%;
+        padding-bottom: 40px;
+
+        .buy-card-inputs {
+            width: 200px;
+            color: $color-text-dark;
+            @include font($size: 15px, $height: 20px, $letter: 0px);
+            @extend %font-additional;
+            margin: 30px 0px 0px 35px;
+
+            input {
+                height: 20px;
+                width: 200px;
+                border: 1px solid #BB945F;
+                margin: 10px 0px;
+            }
+
+            .input-card-code,
+            .input-card-code-2,
+            .input-card-cvc {
+                width: 45px;
+            }
+
+            .input-card-code-2 {
+                margin-left: 5px;
+            }
+
+            .input-card-cvc {
+                margin-bottom: 20px;
+            }
+
+            .buy-btn {
+                display: flex;
+                padding-top: 10px;
+                gap: 25px;
+            }
+
+            .price-book {
+                margin: 0;
+                color: $color-background;
+                @include font($size: 20px, $weight: 700, $letter: 2px);
+                text-transform: uppercase;
+                padding-top: 10px;
+            }
+        }
+
+        .buy-card-description {
+            width: 330px;
+            color: $color-placeholder;
+            @include font($size: 15px, $height: 20px, $letter: 2px);
+            margin: 30px 0px 0px 40px;
+        }
+    }
+}
