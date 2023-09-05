@@ -525,7 +525,8 @@ function registrationPage() {
         modalRegister.classList.remove("active");
         wrapRegister.classList.remove("active");
         navOverlay.classList.remove("active");
-        closeProfileNoAuth()
+        closeProfileNoAuth();
+        CounterOfVisits();
     }
 }
 function authorizationPage() {
