@@ -9,21 +9,22 @@
     width: 16px;
     height: 16px;
     border-radius: 50%;
-}
-
-.cirle-none-active {
     background-color: $color-text-dark;
-}
 
-.cirle-active {
-    background-color: $color-primary;
+    &.active {
+        background-color: $color-primary;
+    }
+
+    &.disabled {
+        opacity: 0.4;
+    }
 }
 
 .carousel-mobile {
     display: none;
 
-    @include media-tablet {
-        display: inline-block;
+    @media (max-width: 1395px) {
+        display: block;
     }
 }
 
