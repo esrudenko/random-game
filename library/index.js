@@ -412,12 +412,8 @@ for (let i = 0; i < favoritesItems.length; i++) {
 function inputCard(e) {
     this.value = this.value.replace(/[^\w\d\s-]/g, '')
 };
-function inputPassword(e) {
-    if (this.value.length > 8) { alert("Password mustn't be more than 8 characters") }
-    this.value = this.value.substr(0, 8)
-};
 function inputCardNumber(e) {
-    if (this.value.length > 16) { alert("Card Number mustn't contain more than 16 digits") }
+    if (this.value.length > 16) { alert("Card Number shouldn't contain more than 16 digits") }
     this.value = this.value.substr(0, 16)
 };
 function inputCardCode(e) {
@@ -425,13 +421,11 @@ function inputCardCode(e) {
     this.value = this.value.substr(0, 2)
 };
 function inputcCardCvc(e) {
-    if (this.value.length > 3) { alert("CVC mustn't contain more than 3 digits") }
+    if (this.value.length > 3) { alert("CVC shouldn't contain more than 3 digits") }
     this.value = this.value.substr(0, 3)
 };
 cardNumber.addEventListener('input', inputCard);
 cardName.addEventListener('input', inputCard);
-password.addEventListener('input', inputPassword);
-pswLogin.addEventListener('input', inputPassword);
 CardNumber.addEventListener('input', inputCardNumber);
 CardCode.addEventListener('input', inputCardCode);
 CardCode2.addEventListener('input', inputCardCode);
@@ -520,6 +514,8 @@ function registrationPage() {
     }
     else if ((isEmailValid(input.value)) == false) {
         alert('email entered incorrectly');
+    } else if (formData.password.length < 8) {
+        alert("Password should be more than 8 characters");
     } else {
         formRegister.setAttribute('action', 'https://rolling-scopes-school.github.io/esrudenko-JSFEPRESCHOOL2023Q2/library/#authorization');
         modalRegister.classList.remove("active");
@@ -543,10 +539,10 @@ function authorizationPage() {
             navOverlay.classList.remove("active");
             closeProfileNoAuth();
             CounterOfVisits();
+        } else {
+            alert("No information about your registration");
+            localStorage.removeItem('formDataLogin');
         }
-    } else {
-        alert("No information about your registration");
-        localStorage.removeItem('formDataLogin');
     }
 }
 
