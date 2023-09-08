@@ -1396,7 +1396,7 @@ h6 {
   top: 0;
   padding: 42px 0 20px 0;
   background-color: #FFF;
-  z-index: 30;
+  z-index: 19;
 }
 @media (max-width: 1024px) {
   .radio-season {
