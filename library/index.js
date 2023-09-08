@@ -237,25 +237,31 @@ function closeBuyCard(event) {
         openBuyCard();
     } else if ((event.target == cardBlock[21])) {
         if (formDataBankCard.bankcard.length < 16) {
-            alert("Card Number mustn't contain less than 16 digits");
+            alert("Card Number souldn't contain less than 16 digits");
             openBuyCard();
         } else if (formDataBankCard.expirationcode.length < 2) {
-            alert("Expiration code mustn't contain less than 2 digits");
+            alert("Expiration code shouldn't contain less than 2 digits");
             openBuyCard();
-        } else if (formDataBankCard.expirationcode2.length < 2) {
-            alert("Expiration code mustn't contain less than 2 digits");
+        } else if (formDataBankCard.expirationcode.length < 2) {
+            alert("Expiration code shouldn't contain less than 2 digits");
+            openBuyCard();
+        } else if ((CardCode.value !== '01') && (CardCode.value !== '02') && (CardCode.value !== '03') && (CardCode.value !== '04') && (CardCode.value !== '05') && (CardCode.value !== '06') && (CardCode.value !== '07') && (CardCode.value !== '08') && (CardCode.value !== '09') && (CardCode.value !== '10') && (CardCode.value !== '11') && (CardCode.value !== '12')) {
+            alert("Expiration code(month) entered incorrectly");
+            openBuyCard();
+        } else if (CardCode2.value < 23) {
+            alert("Expiration code(year) entered incorrectly");
             openBuyCard();
         } else if (formDataBankCard.cvc.length < 3) {
-            alert("CVC mustn't contain less than 3 digits");
+            alert("CVC shouldn't contain less than 3 digits");
             openBuyCard();
         } else if ((typeof formDataBankCard['cardholdername'] === "undefined") || (formDataBankCard.cardholdername.length < 1)) {
-            alert("Input 'Cardholder name' mustn't be empty");
+            alert("Input 'Cardholder name' shouldn't be empty");
             openBuyCard();
         } else if ((typeof formDataBankCard['postalcode'] === "undefined") || (formDataBankCard.postalcode.length < 1)) {
-            alert("Input 'Postal code' mustn't be empty");
+            alert("Input 'Postal code' shouldn't be empty");
             openBuyCard();
         } else if ((typeof formDataBankCard['town'] === "undefined") || (formDataBankCard.town.length < 1)) {
-            alert("Input 'City / Town' mustn't be empty");
+            alert("Input 'City / Town' shouldn't be empty");
             openBuyCard();
         } else {
             document.querySelector(".expectation").setAttribute('disabled', '');
@@ -417,7 +423,7 @@ function inputCardNumber(e) {
     this.value = this.value.substr(0, 16)
 };
 function inputCardCode(e) {
-    if (this.value.length > 2) { alert("Expiration code mustn't contain more than 2 digits") }
+    if (this.value.length > 2) { alert("Expiration code shouldn't contain more than 2 digits") }
     this.value = this.value.substr(0, 2)
 };
 function inputcCardCvc(e) {
@@ -434,72 +440,59 @@ CardCvc.addEventListener('input', inputcCardCvc);
 //LOCALSTORAGE Register
 let formData = {};
 let formRegister = document.querySelector('.form-register');
-//получить данные из input
 formRegister.addEventListener('input', function (event) {
     formData[event.target.name] = event.target.value;
     localStorage.setItem('formData', JSON.stringify(formData));
 });
-//восстановить данные
 if (localStorage.getItem('formData')) {
     formData = JSON.parse(localStorage.getItem('formData'));
     for (let key in formData) {
         formRegister.elements[key].value = formData[key];
     }
 }
-console.log(formData)
 //LOCALSTORAGE Login
 let formDataLogin = {};
 let formLogin = document.querySelector('.form-login');
-//получить данные из input
 formLogin.addEventListener('input', function (event) {
     formDataLogin[event.target.name] = event.target.value;
     localStorage.setItem('formDataLogin', JSON.stringify(formDataLogin));
 });
-//восстановить данные
 if (localStorage.getItem('formDataLogin')) {
     formDataLogin = JSON.parse(localStorage.getItem('formDataLogin'));
     for (let key in formDataLogin) {
         formLogin.elements[key].value = formDataLogin[key];
     }
 }
-console.log(formDataLogin)
 //LOCALSTORAGE Card
 let formDataCard = {};
 let formCard = document.querySelector('.form-card');
-//получить данные из input
 formCard.addEventListener('input', function (event) {
     formDataCard[event.target.name] = event.target.value;
     localStorage.setItem('formDataCard', JSON.stringify(formDataCard));
 });
-//восстановить данные
 if (localStorage.getItem('formDataCard')) {
     formDataCard = JSON.parse(localStorage.getItem('formDataCard'));
     for (let key in formDataCard) {
         formCard.elements[key].value = formDataCard[key];
     }
 }
-console.log(formDataCard)
-
 //LOCALSTORAGE Buy a Library Card
 let formDataBankCard = {};
 let formBankCard = document.querySelector('.bank-card');
-//получить данные из input
 formBankCard.addEventListener('input', function (event) {
     formDataBankCard[event.target.name] = event.target.value;
     localStorage.setItem('formDataBankCard', JSON.stringify(formDataBankCard));
 });
-//восстановить данные
 if (localStorage.getItem('formDataBankCard')) {
     formDataBankCard = JSON.parse(localStorage.getItem('formDataBankCard'));
     for (let key in formDataBankCard) {
         formBankCard.elements[key].value = formDataBankCard[key];
     }
 }
-console.log(formDataBankCard)
 
 //Валидация email
 const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-const input = document.querySelector('.emailreg');
+const emailreg = document.querySelector('.emailreg');
 
 function isEmailValid(value) {
     return EMAIL_REGEXP.test(value);
@@ -511,18 +504,12 @@ function registrationPage() {
         openRegister();
     } else if ((formData.firstame == 0) || (formData.lasttame.length == 0) || (formData.emailreg.length == 0) || (formData.password.length == 0)) {
         openRegister();
-    }
-    else if ((isEmailValid(input.value)) == false) {
-        alert('email entered incorrectly');
-    } else if (formData.password.length < 8) {
-        alert("Password should be more than 8 characters");
     } else {
         formRegister.setAttribute('action', 'https://rolling-scopes-school.github.io/esrudenko-JSFEPRESCHOOL2023Q2/library/#authorization');
         modalRegister.classList.remove("active");
         wrapRegister.classList.remove("active");
         navOverlay.classList.remove("active");
         closeProfileNoAuth();
-        CounterOfVisits();
     }
 }
 function authorizationPage() {
@@ -539,9 +526,6 @@ function authorizationPage() {
             navOverlay.classList.remove("active");
             closeProfileNoAuth();
             CounterOfVisits();
-        } else {
-            alert("No information about your registration");
-            localStorage.removeItem('formDataLogin');
         }
     }
 }
@@ -578,7 +562,6 @@ function buyBook() {
     } else { openLogin(); }
 }
 
-
 // Random Number Card
 function goRandom() {
     let hexadecimalSystem = "0123456789ABCDEF";
@@ -589,6 +572,7 @@ function goRandom() {
     numberCardProfile.textContent = `${randomCardNumber}`;
 }
 
+//if location.href.includes #authorization
 if (location.href.includes('#authorization')) {
     iconProfile.style.display = "none";
     iconAuthorization.style.display = "block";
@@ -613,7 +597,7 @@ visitsCounter.textContent = localStorage.VisitsCounter;
 visitsCardCounter.textContent = localStorage.VisitsCounter;
 let count = visitsCounter.textContent;
 function CounterOfVisits() {
-    visitsCounter.textContent = '1';
+    visitsCounter.textContent = '2';
     count++;
     visitsCounter.textContent = count;
     localStorage.setItem(`VisitsCounter`, visitsCounter.textContent);
@@ -647,3 +631,29 @@ function copyNumberCard() {
     document.execCommand("copy");
     alert("Copied the text");
 }
+
+//evt.preventDefault()
+formRegister.onsubmit = function (evt) {
+    if (password.value.length < 8) {
+        evt.preventDefault();
+        alert("Password should be more than 8 characters");
+        openRegister();
+    } else if ((isEmailValid(emailreg.value)) == false) {
+        evt.preventDefault();
+        alert('Email entered incorrectly');
+        openRegister();
+    } else if ((firstame.value === formData.firstame) && (lasttame.value === formData.lasttame) && (emailreg.value === formData.emailreg) && (password.value === formData.password) && ((localStorage.getItem('BooksCounter') !== null))) {
+        evt.preventDefault();
+        alert('This user is already registered');
+        openLogin();
+    }
+};
+formLogin.onsubmit = function (evt) {
+    if (((email.value !== formData.emailreg) || (psw.value !== formData.password))) {
+        evt.preventDefault();
+        alert("No information about your registration");
+        openLogin();
+    }
+};
+
+console.log("Работа сделана для входа одного юзера (в последней QA сессии это обсуждалось и не должно считаться ошибкой)")
