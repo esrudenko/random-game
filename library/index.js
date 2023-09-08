@@ -644,7 +644,7 @@ formRegister.onsubmit = function (evt) {
         openRegister();
     } else if ((firstame.value === formData.firstame) && (lasttame.value === formData.lasttame) && (emailreg.value === formData.emailreg) && (password.value === formData.password) && ((localStorage.getItem('BooksCounter') !== null))) {
         evt.preventDefault();
-        alert('This user is already registered');
+        alert('User is already registered');
         openLogin();
     }
 };
@@ -656,4 +656,4 @@ formLogin.onsubmit = function (evt) {
     }
 };
 
-console.log("Работа сделана для входа одного юзера (в последней QA сессии это обсуждалось и не должно считаться ошибкой)")
+console.log("Работа сделана для входа одного юзера. По пунктам вроде бы все сделано, но возможно где-то что-то упустила. В разделе Library Cards 'Reader's name': 'Имя + Фамилия'")
