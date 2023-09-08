@@ -19,7 +19,7 @@ $image-gap: 40px;
     top: 0;
     padding: 42px 0 20px 0;
     background-color: $color-light;
-    z-index: 30;
+    z-index: 19;
 
     @include media-tablet {
         position: sticky;
