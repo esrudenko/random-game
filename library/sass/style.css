@@ -419,11 +419,11 @@ ul {
   transition: all 0.5s;
 }
 
-.get-card_title, .input-border input, .card_border-title, .value_coffee, .welcome-text, .modal-card .buy-card-title, .myprofile-information .title-myprofile, .modal_block .title-login, h6, h4, h2, h1 {
+.get-card .get-card_title, .library-find-card .input-border input, .library-find-card .card_border-title, .value_coffee, .welcome-text, .modal-card .buy-card-title, .myprofile-information .title-myprofile, .modal_block .title-login, h6, h4, h2, h1 {
   font-family: "Forum", Verdana, sans-serif;
 }
 
-.get-card_text, .modal-card .buy-card-info .buy-card-inputs, .button, body {
+.get-card .get-card_text, .modal-card .buy-card-info .buy-card-inputs, .button, body {
   font-family: "Inter", Verdana, sans-serif;
 }
 
@@ -1649,10 +1649,9 @@ h6 {
     align-items: center;
   }
 }
-
-.find-card_text {
+.library-find-card .find-card_text {
   margin: 0;
-  padding-left: 138px;
+  text-align: center;
   padding-bottom: 30px;
   font-size: 3rem;
   line-height: 3rem;
@@ -1661,27 +1660,24 @@ h6 {
   letter-spacing: 0.06rem;
 }
 @media (max-width: 1024px) {
-  .find-card_text {
+  .library-find-card .find-card_text {
     padding-left: 0;
   }
 }
-
-.find-card_border {
+.library-find-card .find-card_border {
   width: 600px;
   height: 386px;
   border: 3px solid #BB945F;
   background: #FFF;
   padding: 20px 20px 30px 20px;
 }
-
-.card_border_colored {
+.library-find-card .card_border_colored {
   width: 560px;
   height: 272px;
   background-color: #BB945F;
   padding: 20px;
 }
-
-.card_border-title {
+.library-find-card .card_border-title {
   margin: 0;
   font-size: 3rem;
   line-height: 5rem;
@@ -1691,8 +1687,7 @@ h6 {
   padding-bottom: 20px;
   text-align: start;
 }
-
-.input-border input {
+.library-find-card .input-border input {
   font-size: 3rem;
   line-height: 5rem;
   font-weight: 400;
@@ -1706,22 +1701,19 @@ h6 {
   background-color: #FFF;
   margin-bottom: 25px;
 }
-
-.card-button_wrapper {
+.library-find-card .card-button_wrapper {
   display: block;
   text-align: center;
 }
-
-.profile {
+.library-find-card .profile {
   display: none;
   justify-content: center;
   gap: 35px;
   text-align: center;
   margin-top: 15px;
 }
-
-.profile-card-title,
-.profile-card-counter {
+.library-find-card .profile-card-title,
+.library-find-card .profile-card-counter {
   font-size: 10px;
   line-height: 20px;
   font-weight: 400;
@@ -1729,13 +1721,20 @@ h6 {
   letter-spacing: 0.2px;
   margin: 0;
 }
-
-.profile-card-counter {
+.library-find-card .profile-card-counter {
+  margin-top: -15px;
+}
+.library-find-card .union {
   margin-top: -15px;
 }
 
-.union {
-  margin-top: -15px;
+.card-name.active::-moz-placeholder, .card-number.active::-moz-placeholder {
+  color: #BB945F;
+}
+
+.card-name.active::placeholder,
+.card-number.active::placeholder {
+  color: #BB945F;
 }
 
 .get-card {
@@ -1751,8 +1750,7 @@ h6 {
     padding-top: 27px;
   }
 }
-
-.get-card_title {
+.get-card .get-card_title {
   margin: 0;
   font-size: 3rem;
   line-height: 3rem;
@@ -1762,12 +1760,11 @@ h6 {
   padding-bottom: 35px;
 }
 @media (max-width: 1024px) {
-  .get-card_title {
+  .get-card .get-card_title {
     padding-bottom: 40px;
   }
 }
-
-.get-card_text {
+.get-card .get-card_text {
   margin: 0;
   text-align: end;
   font-size: 2rem;
@@ -1775,23 +1772,25 @@ h6 {
   font-weight: 400;
   font-style: normal;
   letter-spacing: 0.04rem;
-  padding: 0 0 35px 60px;
+  padding: 0 0 35px 74px;
 }
 @media (max-width: 1024px) {
-  .get-card_text {
+  .get-card .get-card_text {
     text-align: center;
     width: 90%;
     padding-right: 60px;
     padding-bottom: 40px;
   }
 }
-
-.button_account__wrapper {
+.get-card .button_account__wrapper {
   display: flex;
   gap: 20px;
 }
-
-.button_account {
+.get-card .button_account {
   padding: 10px 0px;
   text-align: center;
+}
+
+.get-card-auth {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

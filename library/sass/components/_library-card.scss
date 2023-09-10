@@ -12,82 +12,87 @@
         flex-direction: column;
         align-items: center;
     }
-}
 
-.find-card_text {
-    margin: 0;
-    padding-left: 138px;
-    padding-bottom: 30px;
-    @include font ($size: 3.0rem, $letter: 0.06rem);
+    .find-card_text {
+        margin: 0;
+        text-align: center;
+        padding-bottom: 30px;
+        @include font ($size: 3.0rem, $letter: 0.06rem);
 
-    @include media-tablet {
-        padding-left: 0;
+        @include media-tablet {
+            padding-left: 0;
+        }
     }
-}
 
-.find-card_border {
-    width: 600px;
-    height: 386px;
-    border: 3px solid $color-primary;
-    background: $color-light;
-    padding: 20px 20px 30px 20px;
-}
+    .find-card_border {
+        width: 600px;
+        height: 386px;
+        border: 3px solid $color-primary;
+        background: $color-light;
+        padding: 20px 20px 30px 20px;
+    }
 
-.card_border_colored {
-    width: 560px;
-    height: 272px;
-    background-color: $color-primary;
-    padding: 20px;
-}
+    .card_border_colored {
+        width: 560px;
+        height: 272px;
+        background-color: $color-primary;
+        padding: 20px;
+    }
 
-.card_border-title {
-    margin: 0;
-    @extend %font-primary;
-    @include font ($size: 3.0rem, $height: 5.0rem, $letter: 0.06rem);
-    padding-bottom: 20px;
-    text-align: start;
-}
-
-.input-border {
-    input {
+    .card_border-title {
+        margin: 0;
         @extend %font-primary;
         @include font ($size: 3.0rem, $height: 5.0rem, $letter: 0.06rem);
-        border: none;
-        padding: 8px 0px 8px 20px;
-        width: 520px;
-        height: 66px;
-        border-radius: 10px;
-        background-color: $color-light;
-        margin-bottom: 25px;
+        padding-bottom: 20px;
+        text-align: start;
+    }
+
+    .input-border {
+        input {
+            @extend %font-primary;
+            @include font ($size: 3.0rem, $height: 5.0rem, $letter: 0.06rem);
+            border: none;
+            padding: 8px 0px 8px 20px;
+            width: 520px;
+            height: 66px;
+            border-radius: 10px;
+            background-color: $color-light;
+            margin-bottom: 25px;
+        }
+    }
+
+    .card-button_wrapper {
+        display: block;
+        text-align: center;
+    }
+
+    .profile {
+        display: none;
+        justify-content: center;
+        gap: 35px;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .profile-card-title,
+    .profile-card-counter {
+        @include font ($size: 10px, $height: 20px, $letter: 0.2px);
+        margin: 0;
+
+    }
+
+    .profile-card-counter {
+        margin-top: -15px;
+    }
+
+    .union {
+        margin-top: -15px;
     }
 }
 
-.card-button_wrapper {
-    display: block;
-    text-align: center;
-}
-
-.profile {
-    display: none;
-    justify-content: center;
-    gap: 35px;
-    text-align: center;
-    margin-top: 15px;
-}
-
-.profile-card-title,
-.profile-card-counter {
-    @include font ($size: 10px, $height: 20px, $letter: 0.2px);
-    margin: 0;
-
-}
-
-.profile-card-counter {
-    margin-top: -15px;
-}
-
-.union {
-    margin-top: -15px;
+.card-name.active::placeholder,
+.card-number.active::placeholder {
+    color: $color-primary;
 }
 
 .get-card {
@@ -101,40 +106,45 @@
         align-items: center;
         padding-top: 27px;
     }
-}
 
-.get-card_title {
-    margin: 0;
-    @extend %font-primary;
-    @include font ($size: 3.0rem, $letter: 0.06rem);
-    padding-bottom: 35px;
+    .get-card_title {
+        margin: 0;
+        @extend %font-primary;
+        @include font ($size: 3.0rem, $letter: 0.06rem);
+        padding-bottom: 35px;
 
-    @include media-tablet {
-        padding-bottom: 40px;
+        @include media-tablet {
+            padding-bottom: 40px;
+        }
     }
-}
 
-.get-card_text {
-    margin: 0;
-    text-align: end;
-    @extend %font-additional;
-    @include font ($size: 2.0rem, $height: 4.0rem, $letter: 0.04rem);
-    padding: 0 0 35px 60px;
+    .get-card_text {
+        margin: 0;
+        text-align: end;
+        @extend %font-additional;
+        @include font ($size: 2.0rem, $height: 4.0rem, $letter: 0.04rem);
+        padding: 0 0 35px 74px;
 
-    @include media-tablet {
+        @include media-tablet {
+            text-align: center;
+            width: 90%;
+            padding-right: 60px;
+            padding-bottom: 40px;
+        }
+    }
+
+    .button_account__wrapper {
+        display: flex;
+        gap: 20px;
+    }
+
+    .button_account {
+        padding: 10px 0px;
         text-align: center;
-        width: 90%;
-        padding-right: 60px;
-        padding-bottom: 40px;
     }
 }
 
-.button_account__wrapper {
-    display: flex;
-    gap: 20px;
-}
 
-.button_account {
-    padding: 10px 0px;
-    text-align: center;
+.get-card-auth {
+    display: none;
 }

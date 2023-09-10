@@ -29,6 +29,8 @@ let wrapRegister = document.querySelector('.wrap-register');
 let modalRegister = document.querySelector('.modal-register');
 let closeRegisterBatton = document.querySelector('.close-register');
 let registerBlock = document.querySelectorAll('.register-block');
+let firstame = document.getElementById('firstame');
+let lasttame = document.getElementById('lasttame')
 let password = document.getElementById('password');
 let buttonSingup = document.querySelector('.button-singup');
 //modal My Profile
@@ -39,6 +41,8 @@ let myprofileLetter = document.querySelector('.myprofile-letter');
 let myprofileFullname = document.querySelector('.myprofile-fullname');
 let visitsCounter = document.querySelector('.visits-counter');
 let booksCounter = document.querySelector('.books-counter');
+let copyText = document.querySelector(".number-copy");
+let copyButton = document.querySelector(".copy");
 //modal Buy a Library Card
 let wrapCard = document.querySelector('.wrap-card');
 let cardBlock = document.querySelectorAll('.card-block')
@@ -47,34 +51,35 @@ let CardNumber = document.querySelector('.input-card-number');
 let CardCode = document.querySelector('.input-card-code');
 let CardCode2 = document.querySelector('.input-card-code-2');
 let CardCvc = document.querySelector('.input-card-cvc');
-
+//Carousel SLIDER
 let carouselButtons = document.querySelectorAll('.carousel__buttons');
 let point = document.querySelectorAll('.carousel_cirle');
 let imagesSlider = document.querySelectorAll('.images-slider');
 let arrowRight = document.querySelector('.arrow-right');
 let arrowLeft = document.querySelector('.arrow-left');
-
+//Section Favorites
 let formRadio = document.querySelectorAll('.form_radio');
 let favoritesItems = document.querySelectorAll('.favorites-items');
 let winter = document.querySelector('.winter');
 let spring = document.querySelector('.spring');
 let summer = document.querySelector('.summer');
 let autumn = document.querySelector('.autumn');
-
 let buttonBuy = document.querySelectorAll('.button__buy');
 let nameBook = document.querySelectorAll('.name-book');
-
+//Section Library Cards
 let cardNumber = document.querySelector('.card-number');
-let cardName = document.querySelector('.card-name');
+let cardName = document.getElementById('card-name');
 let cardButtonWrapper = document.querySelector('.card-button_wrapper');
 let cardButton = document.querySelector('.card-button');
 let profile = document.querySelector('.profile');
 let visitsCardCounter = document.querySelector('.visits-card-counter');
 let booksCardCounter = document.querySelector('.books-card-counter');
-let copyText = document.querySelector(".number-copy");
-let copyButton = document.querySelector(".copy");
 let cardSingup = document.querySelector('.card-singup');
 let cardLogin = document.querySelector('.card-login');
+let getCardWithoutauth = document.querySelector('.get-card-withoutauth');
+let getCardAuth = document.querySelector('.get-card-auth');
+let cardProfile = document.querySelector('.card-profile');
+let findCardText = document.querySelector('.find-card_text');
 
 
 //HAMBURGER
@@ -224,6 +229,7 @@ function closeMyprofile(event) {
     }
 }
 myprofile.addEventListener("click", openMyprofile);
+cardProfile.addEventListener("click", openMyprofile);
 closeMyprofileBatton.addEventListener("click", closeMyprofile);
 wrapMyprofile.addEventListener("click", closeMyprofile);
 logout.addEventListener("click", closeMyprofile);
@@ -416,7 +422,7 @@ for (let i = 0; i < favoritesItems.length; i++) {
 
 //INPUTS
 function inputCard(e) {
-    this.value = this.value.replace(/[^\w\d\s-]/g, '')
+    this.value = this.value.replace(/[^А-яЁё A-Za-z\w\d\s-]/g, '')
 };
 function inputCardNumber(e) {
     if (this.value.length > 16) { alert("Card Number shouldn't contain more than 16 digits") }
@@ -430,6 +436,8 @@ function inputcCardCvc(e) {
     if (this.value.length > 3) { alert("CVC shouldn't contain more than 3 digits") }
     this.value = this.value.substr(0, 3)
 };
+firstame.addEventListener('input', inputCard);
+lasttame.addEventListener('input', inputCard);
 cardNumber.addEventListener('input', inputCard);
 cardName.addEventListener('input', inputCard);
 CardNumber.addEventListener('input', inputCardNumber);
@@ -578,7 +586,14 @@ if (location.href.includes('#authorization')) {
     iconAuthorization.style.display = "block";
     firstLetters.textContent = `${(formData.firstame).substr(0, 1).toUpperCase()}` + `${(formData.lasttame).substr(0, 1).toUpperCase()}`;
     iconAuthorization.setAttribute('title', `${formData.firstame}` + " " + `${formData.lasttame}`);
+    cardName.placeholder = `${formData.firstame}` + " " + `${formData.lasttame}`;
+    cardName.classList.add("active");
+    cardNumber.placeholder = localStorage.numberCardProfile;
+    cardNumber.classList.add("active");
     numberCardProfile.textContent = localStorage.numberCardProfile;
+    findCardText.textContent = 'Your Library card '
+    getCardWithoutauth.style.display = "none";
+    getCardAuth.style.display = "flex";
     cardButtonWrapper.style.display = "none";
     profile.style.display = "flex";
     if (localStorage.getItem('numberCardProfile') == null) {
