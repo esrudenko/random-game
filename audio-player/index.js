@@ -13,18 +13,21 @@ const currentDurationTime = document.querySelector('.current-duration-time');
 const player = document.querySelector('.player');
 const pauseBtn = document.querySelector('.pause');
 const singer = document.querySelector('.singer');
-//Названия песен
+
+//Songs title
 const songs = ['Le Vent, Le Cri', 'Experience', 'Fly', 'In This Shirt',];
-//Песня по умолчанию
+//Default song
 let songIndex = 0;
+
 //Init
 function loadSong(song) {
     title.innerHTML = song;
     audio.src = `./audio/${song}.mp3`;
 }
 loadSong(songs[songIndex])
-//Highlighting Song
-function highlighting() {
+
+//Change title song, singer, cover
+function changeTitle() {
     if (title.textContent.includes("Le Vent")) {
         singer.textContent = 'Ennio Morricone';
         background.style.backgroundImage = "url('./img/img-song1.jpg')";
@@ -43,31 +46,35 @@ function highlighting() {
         imagePlayer.style.backgroundImage = "url('./img/img-song4.jpg')";
     }
 }
-//play
+
+//Play
 function playSong() {
     player.classList.add('play')
     pauseBtn.src = "../audio-player/img/pause.svg";
     audio.play();
 }
-//pause
+
+//Pause
 function pauseSong() {
     player.classList.remove('play');
     audio.pause();
     pauseBtn.src = "../audio-player/img/play.svg";
     playBtn.classList.add('play');
 }
-//Нажатие на play
+
+//Pressing a "play"
 function playSongBtn() {
     const isPlaying = player.classList.contains('play');
     if (isPlaying) {
         pauseSong();
-        highlighting();
+        changeTitle();
     } else {
         playSong();
-        highlighting();
+        changeTitle();
     }
 }
 playBtn.addEventListener('click', playSongBtn);
+
 //Next Song
 function nextSong() {
     songIndex++
@@ -76,9 +83,10 @@ function nextSong() {
     }
     loadSong(songs[songIndex]);
     playSong();
-    highlighting();
+    changeTitle();
 }
 nextBtn.addEventListener('click', nextSong)
+
 //Previously Song
 function prevSong() {
     songIndex--
@@ -87,7 +95,61 @@ function prevSong() {
     }
     loadSong(songs[songIndex]);
     playSong();
-    highlighting();
+    changeTitle();
 }
 prevBtn.addEventListener('click', prevSong);
 
+//Progress bar
+function updateProgress(e) {
+    const { duration, currentTime } = e.srcElement;
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+}
+audio.addEventListener('timeupdate', updateProgress);
+//Set progress
+function setProgress(e) {
+    const width = this.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+    audio.currentTime = (clickX / width) * duration;
+}
+progressContainer.addEventListener('click', setProgress);
+
+//Autoplay
+audio.addEventListener('ended', nextSong);
+function updateProgressValue() {
+    progress.max = audio.duration;
+    progress.value = audio.currentTime;
+    if (currentDurationTime.innerHTML === "NaN:NaN") {
+        currentDurationTime.innerHTML = "0:00";
+    } else {
+        currentDurationTime.innerHTML = `${(formatTime(Math.floor(audio.currentTime)))} / ${(formatTime(Math.floor(audio.duration)))}`;
+    }
+};
+// convert audio.currentTime and audio.duration into MM:SS format
+function formatTime(seconds) {
+    let min = Math.floor((seconds / 60));
+    let sec = Math.floor(seconds - (min * 60));
+    if (sec < 10) {
+        sec = `0${sec}`;
+    };
+    return `${min}:${sec}`;
+};
+setInterval(updateProgressValue, 500);
+
+//change Progress Bar
+function changeProgressBar() {
+    audio.currentTime = progress.value;
+};
+//* sound volume control
+volume.addEventListener("change", () => {
+    audio.volume = volume.value / 100;
+});
+document.querySelector(".muteButton").addEventListener("click", () => {
+    audio.muted = !audio.muted;
+    if (audio.muted) {
+        muteButton.style.opacity = 0.4;
+    } else {
+        muteButton.style.opacity = 1;
+    }
+});
