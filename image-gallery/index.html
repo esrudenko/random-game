@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="img/favicon.ico">
+    <title>Image-gallery</title>
+</head>
+
+<body>
+    <header class="header">
+        <form class="header-container">
+            <img src="./img/camera.png" alt="camera" class="camera">
+            <p class="title">Image-gallery</p>
+            <input type="search" name="search" id="search-input" class="search-input" placeholder="Search Images..."
+                autocomplete="off" autofocus>
+            <div class="search-btn-wrapper">
+                <button class="search-btn" type="submit">Search</button>
+            </div>
+        </form>
+    </header>
+    <main>
+        <section class="gallery"></section>
+        <div class="image-modal none-active">
+            <a href="#" class="download-btn">Download...</a>
+            <button class="close-btn"><img src="img/close-btn.svg" alt="close-btn"></button>
+            <img class="download-img" alt="image">
+            <button class="arrows left-arrow"><img src="img/left-arrow.svg" alt="left-arrow"></button>
+            <button class="arrows right-arrow"><img src="img/right-arrow.svg" alt="right-arrow"></button>
+        </div>
+    </main>
+    <footer class="footer">
+        <ul class="footer-list">
+            <li class="copy">&copy; 2023</li>
+            <li class="github"><a href="https://github.com/esrudenko" class="footer-link">Elena Mankerova</a>
+            </li>
+            <li class="rs"><a href="https://rs.school/js-stage0/" class="footer-link"><img src="./img/rs_school.svg"
+                        alt="rs_school_logo" class="rs-school-logo"></a></li>
+        </ul>
+    </footer>
+    <div class="modal-overlay"></div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>

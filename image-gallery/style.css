@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+.header-container {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1vw;
+    background: rgb(248, 230, 195);
+    padding: 1vw 4vw;
+}
+
+.camera {
+    max-width: 5vw;
+    max-height: 5vh;
+}
+
+.title {
+    font-size: 4vh;
+    opacity: 0.7;
+}
+
+.search-input {
+    height: 6vh;
+    font-size: 3vh;
+    border-radius: 2vw;
+    border: none;
+    outline: none;
+    padding: 0 2vw;
+    flex-grow: 1;
+    text-transform: capitalize;
+    opacity: 0.8;
+    color: rgb(104, 71, 11);
+}
+
+.search-input::placeholder {
+    font-size: 1.5vw;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: url(./img/close-btn.svg);
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.search-btn-wrapper {
+    width: 5vw;
+    height: 5vh;
+    border: 0.1vw solid rgb(104, 71, 11);
+    border-radius: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: rgb(250, 194, 83);
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    color: rgb(104, 71, 11);
+    font-size: 2vh;
+    cursor: pointer;
+}
+
+.search-btn-wrapper:hover {
+    background-color: rgb(248, 242, 229);
+    transition: all 0.8s;
+}
+
+.gallery {
+    width: 100vw;
+    padding: 2vw 4vw 0 4vw;
+    background: #fff;
+    columns: 3;
+    column-gap: 2vw;
+}
+
+.gallery-image {
+    width: 29.3vw;
+    height: 29.3vw;
+    object-fit: cover;
+    margin-bottom: 1.4vw;
+    border-radius: 1vw;
+    background: #f9f9f9;
+    cursor: pointer;
+}
+
+.image-modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    border-radius: 2vw;
+    background: #f9f9f9;
+    transition: .5s;
+    z-index: 20;
+}
+
+.image-modal.none-active {
+    display: none;
+    opacity: 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 2vw;
+    right: 2vw;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.download-btn {
+    position: absolute;
+    top: 2vw;
+    left: 2vw;
+    padding: 1vw;
+    color: rgb(104, 71, 11);
+    background: rgb(248, 230, 195);
+    text-decoration: none;
+    font-size: 2.4vh;
+    border-radius: 1vw;
+    z-index: 30;
+}
+
+.download-btn:hover {
+    background: rgb(250, 194, 83);
+}
+
+.download-img {
+    height: 70vh;
+    width: auto;
+    max-width: 70vw;
+    border-radius: 1vw;
+    object-fit: cover;
+}
+
+.arrows {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.left-arrow {
+    left: 2vw;
+}
+
+.right-arrow {
+    right: 2vw;
+}
+
+.footer-list {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3vw;
+    background: rgb(248, 230, 195);
+    padding: 1vw 4vw;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: black;
+    opacity: 0.7;
+}
+
+li {
+    font-size: 2.5vh;
+    color: rgb(104, 71, 11);
+    opacity: 0.7;
+    font-weight: 700;
+    list-style: none;
+}
+
+.github:hover,
+.rs:hover {
+    opacity: 1;
+}
+
+.rs-school-logo {
+    width: 5vw;
+    height: 4vh;
+}
+
+.modal-overlay {
+    display: none;
+}
+
+.modal-overlay.active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background: transparent;
+    background-color: black;
+    opacity: 0.7;
+}
