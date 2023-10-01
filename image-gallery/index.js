@@ -7,6 +7,8 @@ const downloadImage = document.querySelector('.download-img');
 const closeBtn = document.querySelector('.close-btn');
 const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
+let imageModal = document.querySelector('.image-modal');
+const modalOverlay = document.querySelector('.modal-overlay');
 let galleryImages;
 
 const keyID = 'n63D8fm5mqS89NIKmOdWYos7AQHmUVsJ--ucE864kM4';
@@ -48,11 +50,11 @@ function ImagesSearch() {
 let currentImage = 0;
 function makeImages(data) {
     data.forEach((item, index) => {
-        let img = document.createElement('img');
+        let img = document.createElement("img");
         img.src = item.urls.regular;
-        img.className = 'gallery-image';
+        img.className = "gallery-image";
         gallery.appendChild(img);
-        img.addEventListener('click', () => {
+        img.addEventListener("click", () => {
             currentImage = index;
             showModalImage(item);
         })
@@ -67,12 +69,17 @@ if (query == '') {
 
 //Modal window: carousel-images and download image
 function showModalImage(item) {
-    let imageModal = document.querySelector('.image-modal');
-    imageModal.classList.remove('none-active');
+    imageModal.classList.remove("none-active");
+    modalOverlay.classList.add("active");
     downloadBtn.href = item.links.html;
     downloadImage.src = item.urls.regular;
     closeBtn.addEventListener("click", () => {
-        imageModal.classList.add('none-active');
+        imageModal.classList.add("none-active");
+        modalOverlay.classList.remove("active");
+    })
+    modalOverlay.addEventListener("click", () => {
+        imageModal.classList.add("none-active");
+        modalOverlay.classList.remove("active");
     })
 }
 
