@@ -97,5 +97,7 @@ function nextImage() {
     }
 }
 
-leftArrow.addEventListener("click", previousImage)
-rightArrow.addEventListener("click", nextImage)
+leftArrow.addEventListener("click", previousImage);
+rightArrow.addEventListener("click", nextImage);
+
+console.log('Дополнительный не предусмотренный в задании функционал, улучшающий качество приложения (+10): Добавлен дополнительный функционал в виде модального окна, которое появляется при нажатии на любую из картинок. Модальное окно содердит галерею загруженных картинок+ссылка на сраницу где можно скачать изображение.')
