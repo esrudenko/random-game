@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(248, 230, 195);
+    padding: 1vw 4vw;
+}
+
+.settings {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.settings:hover {
+    opacity: 1;
+}
+
+.settings,
+.snake-icon {
+    width: 2.5vw;
+    height: 2.5vw;
+}
+
+.title {
+    font-size: 3.5vh;
+    color: black;
+    opacity: 0.7;
+    font-weight: 700;
+    margin-left: 25.5vw;
+}
+
+.input {
+    font-size: 3.5vh;
+    opacity: 0.7;
+    border: none;
+    background: rgb(248, 230, 195);
+    direction: rtl;
+    outline: none;
+}
+
+.snake-game {
+    height: 80vh;
+    padding: 2vh;
+    background: rgb(248, 230, 195);
+}
+
+.square {
+    width: 70vh;
+    height: 70vh;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    background: rgb(248, 230, 215);
+    opacity: 0.7;
+}
+
+.footer-square {
+    width: 70vh;
+    height: 10vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons {
+    width: 13vw;
+    height: 5vh;
+    font-size: 3vh;
+    background: rgb(248, 230, 215);
+    color: rgb(147, 121, 71);
+    border: 0.1vw solid rgb(147, 121, 71);
+    border-radius: 2vw;
+    cursor: pointer;
+}
+
+.buttons:hover,
+.buttons-settings.active {
+    color: rgb(248, 230, 215);
+    background: rgb(147, 121, 71);
+    transition: 0.5s;
+}
+
+.cell {
+    width: 7vh;
+    height: 7vh;
+    border: 0.1vw solid rgb(147, 121, 71);
+}
+
+.snakeBody {
+    background-color: rgb(147, 121, 71);
+    border-radius: 50%;
+}
+
+.snakeHead {
+    background-color: rgb(104, 71, 11);
+    border-radius: 35%;
+}
+
+.mouse {
+    background-color: gray;
+    border-radius: 50%;
+    border: none;
+}
+
+.game-over.active,
+.settings-popup.active {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    padding: 4vw;
+    border-radius: 2vw;
+    background: rgb(248, 230, 195);
+    transition: .5s;
+    z-index: 20;
+}
+
+.settings-popup.active {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 30;
+}
+
+.speed {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    align-items: center;
+}
+
+.settings-title {
+    font-size: 5vh;
+    color: rgba(147, 71, 71);
+    margin-bottom: 2vh;
+}
+
+.record-table {
+    flex-grow: 1;
+    align-items: flex-start;
+    border-left: 0.1vw solid rgb(104, 71, 11);
+    padding-left: 2vw;
+}
+
+.top-score {
+    font-size: 4vh;
+    padding-bottom: 1.5vh;
+    color: rgb(104, 71, 11);
+}
+
+.game-over-text {
+    font-size: 18vh;
+    color: rgb(147, 71, 71);
+}
+
+.restart-game {
+    font-size: 4vh;
+    padding: 0.5vw 1vw;
+    color: rgb(248, 230, 195);
+    background-color: rgba(147, 71, 71, 0.5);
+    border: none;
+    border-radius: 2vw;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.restart-game:hover {
+    background-color: rgba(147, 71, 71);
+}
+
+.score-over {
+    font-size: 7.5vh;
+    background-color: #f8e6c3;
+    color: black;
+    opacity: 0.7;
+    border: none;
+    outline: none;
+}
+
+.overlay,
+.game-over,
+.settings-popup {
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background: transparent;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.footer-list {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3vw;
+    background: rgb(248, 230, 195);
+    padding: 1vw 4vw;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: black;
+    opacity: 0.7;
+}
+
+li {
+    font-size: 2.5vh;
+    color: rgb(104, 71, 11);
+    opacity: 0.7;
+    font-weight: 700;
+    list-style: none;
+}
+
+.github:hover,
+.rs:hover {
+    opacity: 1;
+}
+
+.rs-school-logo {
+    width: 5vw;
+    height: 4vh;
+}
