@@ -91,7 +91,7 @@ body {
 }
 
 .buttons:hover,
-.buttons-settings.active {
+.buttons.active {
     color: rgb(248, 230, 215);
     background: rgb(147, 121, 71);
     transition: 0.5s;
@@ -241,7 +241,7 @@ body {
 
 li {
     font-size: 2.5vh;
-    color: rgb(104, 71, 11);
+    color: black;
     opacity: 0.7;
     font-weight: 700;
     list-style: none;

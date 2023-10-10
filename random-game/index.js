@@ -14,8 +14,13 @@ let buttonRestart = document.querySelector(".button-restart");
 let restartGame = document.querySelector(".restart-game");
 let gameOver = document.querySelector('.game-over');
 let overlay = document.querySelector('.overlay');
+let audioMouse = document.querySelector('.audio-mouse');
+let audioGameOver = document.querySelector('.audio-game-over');
+let audioSwitching = document.querySelector('.audio-switching');
+let audioBase = document.querySelector('.audio-base');
 
 let numberOfCells = 10;
+
 //Create cells in the field
 for (let i = 1; i < (numberOfCells ** 2 + 1); i++) {
     let cell = document.createElement('div');
@@ -116,6 +121,7 @@ function moveSnake() {
         createMouse();
         score++;
         input.value = `Score: ${score}`;
+        audioMouse.play();
     }
     if (snakeBody[0].classList.contains('snakeBody')) {
         setTimeout(() => {
@@ -124,6 +130,8 @@ function moveSnake() {
             gameOver.appendChild(inputOver);
             inputOver.classList.add('score-over');
             inputOver.value = `Your score: ${score}`;
+            audioBase.pause();
+            audioGameOver.play();
             localStorage.setItem(`CurrentScore`, `${score}`);
             overwriteScoreTable();
         }, 200)
@@ -156,3 +164,128 @@ window.addEventListener('keydown', function (event) {
     }
 })
 
+//Stop, Play, Restart Game
+let isPaused = true;
+let myInterval = window.setInterval(function () {
+    if (!isPaused) {
+        moveSnake();
+    }
+}, 400)
+function stop() {
+    isPaused = true;
+    audioBase.pause();
+    audioSwitching.play();
+    buttonRestart.classList.remove('active');
+    buttonPlay.classList.remove('active');
+    buttonStop.classList.add('active');
+}
+function play() {
+    isPaused = false;
+    audioSwitching.play();
+    audioBase.play();
+    buttonRestart.classList.remove('active');
+    buttonStop.classList.remove('active');
+    buttonPlay.classList.add('active');
+}
+buttonPlay.addEventListener("click", play);
+buttonStop.addEventListener("click", stop);
+buttonRestart.addEventListener("click", function () {
+    audioSwitching.play();
+    buttonPlay.classList.remove('active');
+    buttonStop.classList.remove('active');
+    buttonRestart.classList.add('active');
+    setTimeout(() => {
+        location.reload();
+    }, 400);
+});
+restartGame.addEventListener("click", function () {
+    location.reload();
+});
+
+//Settings
+settings.addEventListener("click", function () {
+    settingsPopup.classList.add('active');
+    overlay.classList.add('active');
+    stop();
+});
+overlay.addEventListener("click", function () {
+    overlay.classList.remove('active');
+    settingsPopup.classList.remove('active');
+});
+buttonSlowlySpeed.classList.add('active');
+
+//Settings SPEED
+buttonSlowlySpeed.addEventListener('click', function () {
+    audioSwitching.play();
+    buttonNormalSpeed.classList.remove('active');
+    buttonFastSpeed.classList.remove('active');
+    buttonSlowlySpeed.classList.add('active');
+    clearInterval(myInterval);
+    myInterval = window.setInterval(function () {
+        if (!isPaused) {
+            moveSnake();
+        }
+    }, 400);
+});
+buttonNormalSpeed.addEventListener('click', function () {
+    audioSwitching.play();
+    buttonSlowlySpeed.classList.remove('active');
+    buttonFastSpeed.classList.remove('active');
+    buttonNormalSpeed.classList.add('active');
+    clearInterval(myInterval);
+    myInterval = window.setInterval(function () {
+        if (!isPaused) {
+            moveSnake();
+        }
+    }, 200);
+});
+buttonFastSpeed.addEventListener('click', function () {
+    audioSwitching.play();
+    buttonSlowlySpeed.classList.remove('active');
+    buttonNormalSpeed.classList.remove('active');
+    buttonFastSpeed.classList.add('active');
+    clearInterval(myInterval);
+    myInterval = window.setInterval(function () {
+        if (!isPaused) {
+            moveSnake();
+        }
+    }, 100);
+});
+
+//Score Table
+function overwriteScoreTable() {
+    let scoreTable = [];
+    if (localStorage.getItem('Top1') == null) {
+        for (let i = 1; i < 11; i++) {
+            localStorage.setItem(`Top${i}`, 0);
+        }
+    }
+    scoreTable.push(localStorage.Top1, localStorage.Top2, localStorage.Top3, localStorage.Top4, localStorage.Top5, localStorage.Top6, localStorage.Top7, localStorage.Top8, localStorage.Top9, localStorage.Top10, localStorage.CurrentScore);
+    scoreTable.sort((a, b) => b - a);
+    localStorage.Top1 = scoreTable[0];
+    localStorage.Top2 = scoreTable[1];
+    localStorage.Top3 = scoreTable[2];
+    localStorage.Top4 = scoreTable[3];
+    localStorage.Top5 = scoreTable[4];
+    localStorage.Top6 = scoreTable[5];
+    localStorage.Top7 = scoreTable[6];
+    localStorage.Top8 = scoreTable[7];
+    localStorage.Top9 = scoreTable[8];
+    localStorage.Top10 = scoreTable[9];
+}
+if (localStorage.getItem('Top1') == null) {
+    for (let i = 0; i < 11; i++) {
+        topScore[i].textContent = `Top-${i + 1}:  0`;
+    }
+} else {
+    topScore[0].textContent = `Top-1:  ${localStorage.Top1}`;
+    topScore[1].textContent = `Top-2:  ${localStorage.Top2}`;
+    topScore[2].textContent = `Top-3:  ${localStorage.Top3}`;
+    topScore[3].textContent = `Top-4:  ${localStorage.Top4}`;
+    topScore[4].textContent = `Top-5:  ${localStorage.Top5}`;
+    topScore[5].textContent = `Top-6:  ${localStorage.Top6}`;
+    topScore[6].textContent = `Top-7:  ${localStorage.Top7}`;
+    topScore[7].textContent = `Top-8:  ${localStorage.Top8}`;
+    topScore[8].textContent = `Top-9:  ${localStorage.Top9}`;
+    topScore[9].textContent = `Top-10: ${localStorage.Top10}`;
+}
