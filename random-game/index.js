@@ -34,3 +34,44 @@ for (let i = 0; i < cell.length; i++) {
     cell[i].setAttribute('posY', y);
     x++;
 };
+
+//Random location of the snake
+function makeSnake() {
+    let posX = Math.round(Math.random() * (numberOfCells - 3) + 3);
+    let posY = Math.round(Math.random() * (numberOfCells - 1) + 1);
+    return [posX, posY];
+}
+let coordinates = makeSnake();
+
+//Create Snake
+let snakeBody = [document.querySelector('[posX = "' + coordinates[0] + '"][posY = "' + coordinates[1] + '"]'),
+document.querySelector('[posX = "' + (+coordinates[0] - 1) + '"][posY = "' + coordinates[1] + '"]'),
+document.querySelector('[posX = "' + (+coordinates[0] - 2) + '"][posY = "' + coordinates[1] + '"]')];
+for (let i = 0; i < snakeBody.length; i++) {
+    snakeBody[i].classList.add('snakeBody');
+}
+snakeBody[0].classList.add('snakeHead');
+
+//Create Mouse
+function createMouse() {
+    function makeMouse() {
+        let posX = Math.round(Math.random() * (numberOfCells - 1) + 1);
+        let posY = Math.round(Math.random() * (numberOfCells - 1) + 1);
+        return [posX, posY];
+    }
+    let mouseCoordinates = makeMouse();
+    mouse = document.querySelector('[posX = "' + mouseCoordinates[0] + '"][posY = "' + mouseCoordinates[1] + '"]');
+    while (mouse.classList.contains('snakeBody')) {
+        let mouseCoordinates = makeMouse();
+        mouse = document.querySelector('[posX = "' + mouseCoordinates[0] + '"][posY = "' + mouseCoordinates[1] + '"]');
+    }
+    mouse.classList.add('mouse');
+}
+createMouse();
+let direction = 'right';
+let steps = false;
+let input = document.createElement('input');
+header.appendChild(input);
+input.classList.add('input');
+let score = 0;
+input.value = `Score: ${score}`;
