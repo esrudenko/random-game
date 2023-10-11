@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="img/favicon.ico">
+    <title>Random-Game</title>
+</head>
+
+<body>
+    <header class="header">
+        <img src="./img/settings.svg" alt="settings" class="settings" title="Settings">
+        <div class="settings-popup">
+            <div class="speed">
+                <p class="settings-title">Speed:</p>
+                <button class="buttons buttons-settings button-slowly-speed">Slowly</button>
+                <button class="buttons buttons-settings button-normal-speed">Normal</button>
+                <button class="buttons buttons-settings button-fast-speed">Fast</button>
+            </div>
+            <div class="record-table">
+                <p class="settings-title">Record Table:</p>
+                <p class="top-score"></p>
+                <p class="top-score"></p>
+                <p class="top-score"></p>
+                <p class="top-score"></p>
+                <p class="top-score"></p>
+                <p class="top-score"></p>
+                <p class="top-score"></p>
+                <p class="top-score"></p>
+                <p class="top-score"></p>
+                <p class="top-score"></p>
+            </div>
+            <img src="./img/close_btn.svg" alt="close_button" class="close-btn">
+        </div>
+        <p class="title"><img src="./img/Snake.svg" alt="snake" class="snake-icon"> Random-Game</p>
+    </header>
+    <main>
+        <section class="snake-game">
+            <div class="square"></div>
+            <footer class="footer-square">
+                <button class="buttons button-play">Play</button>
+                <button class="buttons button-stop">Stop</button>
+                <button class="buttons button-restart">Restart</button>
+                <audio src="./audio/base_music.mp3" class="audio-base" loop></audio>
+                <audio src="./audio/eat_mouse.mp3" class="audio-mouse"></audio>
+                <audio src="./audio/game_over.mp3" class="audio-game-over"></audio>
+                <audio src="./audio/press_speed.mp3" class="audio-switching"></audio>
+            </footer>
+        </section>
+        <div class="game-over">
+            <p class="game-over-text">Game over!</p>
+            <button class="restart-game">START NEW GAME</button>
+        </div>
+        <div class="overlay"></div>
+    </main>
+    <footer class="footer">
+        <ul class="footer-list">
+            <li class="copy">&copy; 2023</li>
+            <li class="github"><a href="https://github.com/esrudenko" class="footer-link">Elena Mankerova</a>
+            </li>
+            <li class="rs"><a href="https://rs.school/js-stage0/" class="footer-link"><img src="./img/rs_school.svg"
+                        alt="rs_school_logo" class="rs-school-logo"></a></li>
+        </ul>
+    </footer>
+    <div class="modal-overlay"></div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
