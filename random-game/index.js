@@ -7,6 +7,7 @@ let buttonNormalSpeed = document.querySelector('.button-normal-speed');
 let buttonFastSpeed = document.querySelector('.button-fast-speed');
 let recordTable = document.querySelector('.record-table');
 let topScore = document.querySelectorAll('.top-score');
+let closeBtn = document.querySelector('.close-btn');
 let square = document.querySelector('.square');
 let buttonPlay = document.querySelector(".button-play");
 let buttonStop = document.querySelector(".button-stop");
@@ -126,10 +127,10 @@ function moveSnake() {
     if (snakeBody[0].classList.contains('snakeBody')) {
         setTimeout(() => {
             gameOver.classList.add('active');
-            let inputOver = document.createElement('input');
+            let inputOver = document.createElement('div');
             gameOver.appendChild(inputOver);
             inputOver.classList.add('score-over');
-            inputOver.value = `Your score: ${score}`;
+            inputOver.innerHTML = `Your score: ${score}`;
             audioBase.pause();
             audioGameOver.play();
             localStorage.setItem(`CurrentScore`, `${score}`);
@@ -208,10 +209,13 @@ settings.addEventListener("click", function () {
     overlay.classList.add('active');
     stop();
 });
-overlay.addEventListener("click", function () {
+function closeSettings() {
     overlay.classList.remove('active');
     settingsPopup.classList.remove('active');
-});
+}
+overlay.addEventListener("click", closeSettings);
+closeBtn.addEventListener("click", closeSettings);
+
 buttonSlowlySpeed.classList.add('active');
 
 //Settings SPEED

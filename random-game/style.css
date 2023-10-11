@@ -177,6 +177,12 @@ body {
     color: rgb(147, 71, 71);
 }
 
+.close-btn {
+    width: 1.5vw;
+    height: 1.5vw;
+    cursor: pointer;
+}
+
 .restart-game {
     font-size: 4vh;
     padding: 0.5vw 1vw;
