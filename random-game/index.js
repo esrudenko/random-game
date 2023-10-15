@@ -19,8 +19,10 @@ let audioMouse = document.querySelector('.audio-mouse');
 let audioGameOver = document.querySelector('.audio-game-over');
 let audioSwitching = document.querySelector('.audio-switching');
 let audioBase = document.querySelector('.audio-base');
+let countdown = document.querySelector('.countdown');
 
 let numberOfCells = 10;
+localStorage.setItem("Timer", countdown.innerHTML)
 
 //Create cells in the field
 for (let i = 1; i < (numberOfCells ** 2 + 1); i++) {
@@ -76,11 +78,11 @@ function createMouse() {
 createMouse();
 let direction = 'right';
 let steps = false;
-let input = document.createElement('input');
-header.appendChild(input);
-input.classList.add('input');
+let scoreHeader = document.createElement('div');
+header.appendChild(scoreHeader);
+scoreHeader.classList.add('score-header');
 let score = 0;
-input.value = `Score: ${score}`;
+scoreHeader.innerHTML = `Score: ${score}`;
 
 //Move Snake
 function moveSnake() {
@@ -121,16 +123,16 @@ function moveSnake() {
         snakeBody.push(document.querySelector('[posX = "' + a + '"][posY = "' + b + '"]'));
         createMouse();
         score++;
-        input.value = `Score: ${score}`;
+        scoreHeader.innerHTML = `Score: ${score}`;
         audioMouse.play();
     }
-    if (snakeBody[0].classList.contains('snakeBody')) {
+    if ((snakeBody[0].classList.contains('snakeBody')) || (localStorage.Timer == 'Timer: 0:00')) {
         setTimeout(() => {
             gameOver.classList.add('active');
-            let inputOver = document.createElement('div');
-            gameOver.appendChild(inputOver);
-            inputOver.classList.add('score-over');
-            inputOver.innerHTML = `Your score: ${score}`;
+            let scoreOverGame = document.createElement('div');
+            gameOver.appendChild(scoreOverGame);
+            scoreOverGame.classList.add('score-overgame');
+            scoreOverGame.innerHTML = `Your score: ${score}`;
             audioBase.pause();
             audioGameOver.play();
             localStorage.setItem(`CurrentScore`, `${score}`);
@@ -165,13 +167,33 @@ window.addEventListener('keydown', function (event) {
     }
 })
 
+//Create timer
+let time = 299;
+function updateCountdown() {
+    let min = Math.floor(time / 60);
+    let sec = time % 60;
+    if (sec < 10) {
+        sec = "0" + sec;
+    }
+    countdown.innerHTML = `Timer: ${min}:${sec}`;
+    localStorage.setItem("Timer", countdown.innerHTML)
+    time--;
+}
+
 //Stop, Play, Restart Game
 let isPaused = true;
 let myInterval = window.setInterval(function () {
     if (!isPaused) {
         moveSnake();
     }
-}, 400)
+}, 400);
+
+let TimerInterval = window.setInterval(function () {
+    if (!isPaused) {
+        updateCountdown();
+    }
+}, 1000);
+
 function stop() {
     isPaused = true;
     audioBase.pause();
@@ -294,4 +316,5 @@ if (localStorage.getItem('Top1') == null) {
     topScore[9].textContent = `Top-10: ${localStorage.Top10}`;
 }
 
-console.log("Вроде-бы все требования ТЗ соблюдены, но буду рада, если укажите на ошибки. (Вёрстка, Логика игры, Завершение игры, Результат, Таблица рекордов, Звуки игры - все реализовано). Из дополнительного реализованного функционала: можно именять скорость игры(в настройках), а также поставить игру на play/pause). Правила игры думаю знаете, единственное хочу уточнить, что игра заканчивается в случае, когда змейка врезается в свой хвост. Перемещение змеи реализовано кнопками клавиатуры (вперед/назад/право/лево), переключение по кнопкам реализовано по клику.")
+
+console.log("Вроде-бы все требования ТЗ соблюдены, но буду рада, если укажите на ошибки. (Вёрстка, Логика игры, Завершение игры, Результат, Таблица рекордов, Звуки игры - все реализовано). Pавершение игры при достижении игровой цели: игровая цель - набрать наибольшое количество очков не более чем за 5 минут. Из дополнительного реализованного функционала: можно именять скорость игры(в настройках), а также поставить игру на play/pause). Правила игры думаю знаете, единственное хочу уточнить, что игра заканчивается в случае, когда змейка врезается в свой хвост или когда таймер достигает отметки 0:00. Перемещение змеи реализовано кнопками клавиатуры (вперед/назад/право/лево), переключение по кнопкам в самой игре реализовано по клику.")

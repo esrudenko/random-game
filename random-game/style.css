@@ -37,21 +37,13 @@ body {
     height: 2.5vw;
 }
 
-.title {
+.title,
+.countdown,
+.score-header {
     font-size: 3.5vh;
     color: black;
     opacity: 0.7;
     font-weight: 700;
-    margin-left: 25.5vw;
-}
-
-.input {
-    font-size: 3.5vh;
-    opacity: 0.7;
-    border: none;
-    background: rgb(248, 230, 195);
-    direction: rtl;
-    outline: none;
 }
 
 .snake-game {
@@ -198,7 +190,7 @@ body {
     background-color: rgba(147, 71, 71);
 }
 
-.score-over {
+.score-overgame {
     font-size: 7.5vh;
     background-color: #f8e6c3;
     color: black;
